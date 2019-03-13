@@ -1,0 +1,132 @@
+<style>
+  .filediv {
+  background-color: rgba(255, 255, 255, 1) !important;
+  color: white !important; 
+  /* color: #ffcc01 !important; */ 
+  border-left-color: #d2002e !important;
+  border-left-width: 1px !important;
+  text-transform: initial !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow:ellipsis !important;
+  
+}
+.filediv:hover {
+  
+  background-color: rgb(17, 16, 16) !important;
+  border-color: #c12e2a !important;
+  
+  white-space: nowrap !important;
+  overflow: visible !important;
+
+  
+  
+}
+
+ul, #myUL {
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: red;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */'
+  transform: rotate(90deg);  
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+</style>
+
+{{#if user}}
+<div class="container-fluid">
+  <h2 class="page-header">Welcome <span class="text-primary"> {{user.firstname}} {{user.lastname}} </span> </h2>
+  <div class="row">
+    <div class="col-xs-12 rounded w-100 border border-primary p-2">
+      <h3 class="text-center">YELA MODERN CURRICULUM ACADEMY</h3>
+      <h5> {{count}} Subjects
+        <!-- Load Data Button -->
+        {{#equal user.username "admin" }}
+        <form action="/courses/treeload" method="post" id="dataloader">
+          <button class="btn btn-success" type="submit">
+            <i class="fa fa-upload" aria-hidden="true"></i>
+            Load Data</button>
+
+        </form>
+        <form action="/courses/walkdel" method="post" id="delall">
+          <input type="hidden" name="subject" value="ALL">
+          <button class="btn btn-danger" type="submit">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            Delete All</button>
+
+        </form>
+        {{/equal}}
+      </h5>
+
+      <hr>
+      <div class="view ads">
+
+
+        <div class="col-md-12 col-md-offset-3 bg-light ml-3 pl-3">
+          <ul id="myUL">
+            {{> list}}
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{{else}}
+<h1 class="pt-6 text-center"> Please Login</h1>
+{{/if}}
+
+
+
+<script>
+
+  var toggler = document.getElementsByClassName("caret");
+
+  var i;
+  for (i = 0; i < toggler.length; i++) {
+    toggler[i].addEventListener("click", function () {
+      console.log(this)
+      if (this.parentElement.querySelector(".nested")) {
+        this.parentElement.querySelector(".nested").classList.toggle("active");
+        this.classList.toggle("caret-down");
+      }
+
+    });
+
+  }
+
+
+</script>

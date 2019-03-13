@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="{{author}}">
+
+    <title>{{title}}</title>
+    <link rel="icon" type="image/x-ico" href="/images/favicon.ico">
+    <!-- Font Awesome -->
+   
+
+    <!-- Bootstrap core CSS -->
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/offcanvas.css" rel="stylesheet">
+    <link href="/stylesheets/my.css" rel="stylesheet">
+    <link href="/stylesheets/layout.css" rel="stylesheet">
+
+    <link href="/stylesheets/list.css" rel="stylesheet">
+    <link href="/stylesheets/project.css" rel="stylesheet">
+
+    
+
+    <!-- Bootstrap core CSS -->
+    {{!-- <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --}}
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/resume.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg  navbar-dark fixed-top  banner bg-light ">
+        
+        <div class="container">
+             {{#if user}}
+            <a href="/home" class="navbar-brand brand"><img class="logo" src="/images/logo.png"> YELA</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                   
+                    <li class="nav-item">
+                        
+                         <div id="sech" class="ml-5 mt-1">
+                            <form method="POST" action="/courses/search">
+                             <div class="input-group ">
+
+                                    <input  class="form-control my-0 py-1 red-border" type="text" name="text" placeholder="Search" aria-label="Search" required>
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-secondary">
+                                            <i class="fa fa-search text-grey" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+
+                                </div> 
+                              
+                            </form>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/home" class="nav-link text-dark font-weight-bold">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/courses/listree" class="nav-link ml-auto text-dark font-weight-bold">List Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/users/listusers" class="nav-link text-dark font-weight-bold">List Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/users/userform" class="nav-link text-dark font-weight-bold"><i class="fas fa-user-edit"></i>edit
+                            user</a>
+                    </li>
+
+
+                    
+                    {{#equal user.username "admin" }}
+
+                    <li class="nav-item">
+                        <a href="/users/register" class="nav-link text-dark font-weight-bold">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/users/students" class="nav-link text-dark font-weight-bold">Register Student</a>
+                    </li>
+                    {{/equal}}
+
+                    <li class="nav-item">
+                        <a href="/users/logout" class="nav-link text-dark font-weight-bold">Logout</a>
+                    </li>
+                     </ul>
+                     </div>
+                    {{else}}
+                    <a href="/" class="navbar-brand brand"><img class="logo" src="/images/logo.png"> YELA</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div>
+            <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link text-dark font-weight-bold">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/users/login" class="nav-link text-dark font-weight-bold">Login</a>
+                    </li>
+
+
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                {{# if user}}
+                {{!-- <div class="alert alert-primary">Welcome {{user.name}}</div> --}}
+                {{/if}}
+                {{#if success_msg}}
+                <div class="alert alert-success">{{success_msg}}</div>
+                {{/if}}
+
+                {{#if error_msg}}
+                <div class="alert alert-danger">{{error_msg}}</div>
+                {{/if}}
+
+                {{#if error}}
+                <div class="alert alert-danger">{{error}}</div>
+                {{/if}}
+
+            </div>
+        </div>
+    </main>
+
+    <div>{{{body}}}</div>
+
+    <footer>
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">Copyright © 2019
+            <a href="/"> Yela Modern Curriculum Academy</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.2/dist/js/bootstrap.bundle.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP"
+        crossorigin="anonymous"></script>
+    <script src="/javascripts/handlebars.js" type='text/javascript'></script>
+    <script src="/javascripts/misc.js"></script>
+    <script src="/javascripts/schoolscript.js"></script>
+
+     <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/js/resume.min.js"></script>
+
+
+</body>
+
+</html>

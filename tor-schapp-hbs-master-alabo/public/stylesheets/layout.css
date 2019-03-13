@@ -1,0 +1,368 @@
+#mylist {
+    width: 900px;
+    font-size: 25px;
+}
+
+form#dataloader {
+    display: inline;
+}
+
+form#delall {
+    display: inline;
+}
+
+.delform {
+    display: inline;
+}
+
+.mycol {
+    border: 1px solid gold;
+    min-height: vh;
+}
+
+.carousel {
+    min-height: 45vh;
+    border: 1px solid yellow;
+}
+
+.w70 {
+    flex-basis: 70%;
+}
+
+.w30 {
+    flex-basis: 28%
+}
+
+.card {
+    border-radius: 2%;
+}
+
+
+/*
+.option::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    margin-right: 0.2em;
+    background: #FFCC01;
+    display:inline-block;
+    top: 50%;
+    left:2px;
+}
+*/
+
+.card .rside {
+    position: relative;
+    margin: 1em;
+    background: red;
+    opacity: 0.5;
+}
+
+.rside::before,
+.rside::after {
+    content: '';
+    position: absolute;
+    top: 1.25em;
+    bottom: 1.25em;
+    left: 1.25em;
+    right: 1.25em;
+    opacity: 1;
+    transition: transform ease-out 250ms;
+}
+
+.rside::before {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    transform: scale(0, 1);
+}
+
+.rside::after {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    transform: scale(1, 0);
+}
+
+.rside:hover::before {
+    transform: scale(1.05, 1);
+}
+
+.rside:hover::after {
+    transform: scale(1, 1.05);
+}
+
+.card .card_img {
+    max-width: 100%;
+    display: block;
+    transition: opacity ease-out 250ms;
+}
+
+.card .rside:hover {
+    opacity: .4;
+}
+
+.rside .card_text {
+    position: absolute;
+    top: 50%;
+    left: 125%;
+    transform: translate(-50%, -50%);
+    color: black;
+    opacity: 1;
+    transition: opacity ease-out 250ms;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card:hover {
+    opacity: 1;
+}
+
+.icard img {
+    border-radius: 10%;
+    width: 250px;
+    height: 150px;
+}
+
+.icard::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f04b";
+    position: absolute;
+    font-size: 40px;
+    top: 20%;
+    left: 50%;
+    color: yellow;
+    display: block;
+    transform: scale(0);
+}
+
+.icard:hover::before {
+    opacity: 0.7;
+    transform: scale(1, 1.05);
+}
+
+a.card-link {
+    color: black;
+}
+
+.rside .card_title {
+    font-size: 1rem;
+    color: black;
+    margin-bottom: 0;
+}
+
+.nvd {
+    color: #FFCC01;
+}
+
+.newvideo {
+    min-height: 25vh;
+    border: 1px solid yellow;
+}
+
+.categoryvid {
+    min-height: 50vh;
+    border: 1px solid yellow;
+}
+
+
+/* .foo {
+    margin-top: 300px!important;
+} */
+
+.logo {
+    color: red;
+}
+
+.myhf {
+    border: 1px solid yellow;
+    min-height: 15vh;
+}
+
+.myh {
+    border: 2px solid grey;
+    min-height: 10vh;
+}
+
+.text-white {
+    text-align: center;
+}
+
+.playlist {
+    min-height: 50vh;
+    border: 1px solid yellow;
+}
+
+.recent {
+    min-height: 50vh;
+    border: 1px solid yellow;
+}
+
+.logo {
+    height: 40px;
+    width: 60px;
+}
+
+.margin {
+    margin-top: 90px;
+}
+
+.contents {
+    flex-grow: 1;
+    background: #00B7FF;
+}
+
+.heders {
+    display: flex;
+    background: #F8F9FA;
+}
+
+.top-heads {
+    width: 200px;
+    text-align: center;
+}
+
+.content {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.login-body {
+    margin-top: 70px;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/images/lsb_student1.jpg")center/cover fixed no-repeat;
+}
+
+.login-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    height: 300px;
+    background: linear-gradient(rgba(128, 127, 127, 0.7), rgba(128, 127, 127, 0.7));
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+.fbody {
+    width: 200px;
+    border-radius: 1rem;
+    border: 1px solid rgb(12, 11, 11);
+    background: linear-gradient(rgba(7, 6, 6, 0.7), rgba(15, 15, 15, 0.7));
+}
+
+.form-content {
+    margin-top: -30px;
+}
+
+.input-field {
+    /* display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; */
+    margin: 5px;
+}
+
+.text-head {
+    text-align: center;
+    color: #FF4F81;
+}
+
+.text1 {
+    /* font-size: 20px; */
+    color: #fff;
+    /* margin-left: 20px;
+    padding: 0;
+    margin-top: -20px; */
+}
+
+.btn-submit {
+    background: #424242;
+    color: #F8F9FA;
+    width: 100px;
+    /* height: 30px; */
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.form-input {
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    /* margin-top: -40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px; */
+}
+
+.navbar {
+    padding: 0px;
+}
+
+.navbar-nav li {
+    z-index: 1;
+}
+
+.navbar-nav li a {
+    font-size: 17px;
+    padding: 10px 10px!important;
+}
+
+.navbar-nav li a:hover {
+    border-right: 3px solid #ff4f81;
+    border-left: 3px solid #ff4f81;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #000;
+}
+
+.banner {
+    background: lightgray;
+    /* background:#0cffc3; */
+}
+
+.brand {
+    color: #ff4f81!important;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: -50px;
+    transition: linear all 2s ease-in ease-out;
+    -webkit-transition: linear all 2s ease-in ease-out;
+    -moz-transition: linear all 2s ease-in ease-out;
+    -ms-transition: linear all 2s ease-in ease-out;
+    -o-transition: linear all 2s ease-in ease-out;
+}
+
+.brand:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+.bgimage {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/stduding.jpeg")no-repeat;
+    background-size: cover;
+    min-height: 70vh;
+    color: #ff4f81;
+}

@@ -1,0 +1,133 @@
+/* .padding{padding: 2rem 0;} */
+
+.card {
+    margin: 0.5rem;
+}
+
+.hei {
+    height: 60vh;
+}
+
+#sech {
+    width: 50%;
+    height: 10px;
+}
+
+
+/* tabMenu section */
+
+.tablink {
+    background: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+.tablink2 {
+    background: blue;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 50%;
+}
+
+.tablink:hover {
+    background-color: #777;
+    /* border-bottom: solid 2px;
+    border-bottom-color: #ff4f81; */
+}
+
+.tablink2:hover {
+    background-color: gray;
+    /* border-bottom: solid 2px;
+    border-bottom-color: #ff4f81; */
+}
+
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 50px;
+    text-align: cente;
+    min-height: 80vh;
+}
+
+#About {
+    background-color: gray;
+}
+
+#Admission {
+    background-color: gray;
+}
+
+#Academics {
+    background-color: gray;
+}
+
+#Athletics {
+    background-color: gray;
+}
+
+
+/* tabMenu ends  */
+
+
+/* .height{
+    height: 90vh;
+    background: #ff4f81
+}
+ */
+
+#Admission {
+    background: url("/images/glalary7.jpg") no-repeat;
+    background-size: cover;
+    min-height: 80vh;
+    color: #ff4f81;
+}
+
+.adcolo {
+    background: rgba(255, 255, 255, 0.5);
+    color: #000;
+}
+
+.weoffer {
+    font-weight: bold;
+}
+
+.colo {
+    background: #ff4f81;
+}
+
+.studentbody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/lsb_student1.jpg')center/cover fixed no-repeat;
+}
+
+@media(max-width:992px) {
+    .navbar-toggler {
+        margin: 0px 0px 5px 10px;
+        border-color: #ff4f81;
+    }
+    .navbar-toggler:hover,
+    .navbar-toggler:focus {
+        border-bottom-color: #ff4f81;
+        background-color: #fff;
+    }
+    .navbar-nav li a {
+        text-align: center;
+        background-color: aliceblue;
+    }
+    .navbar-nav li a:hover {
+        background-color: #ff4f81
+    }
+}

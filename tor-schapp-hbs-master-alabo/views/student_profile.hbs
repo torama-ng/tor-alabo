@@ -1,0 +1,93 @@
+<div class="container-fluid">
+
+    <div class="col-md-4">
+
+        <div class="row">
+
+
+            {{#if items.profilepic}}
+
+            <div class="card">
+                <img src="{{items.profilepic}}" alt="{{items.surname}} {{items.othername}}">
+                <p class="card_title">
+                    {{items.surname}} {{items.othername}}
+                </p>
+
+                <img style="border-radius:50%;width:100px;height:100px" src="../public/upload{{profilepic}}" alt="{{items.othername}}">">
+
+                <h5 class="card_text">
+                    {{items.email}}
+                </h5>
+
+                <h5 class="card_text">
+                    {{items.phone}}
+                </h5>
+
+                <h5 class="card_text">
+                    {{items.class}}
+                </h5>
+                <h5 class="card_text">
+                    {{items.address}} , {{items.lga}} , {{items.state}}.
+                </h5>
+
+            </div>
+
+             <form action="/upload/profile" method="POST" enctype="multipart/form-data">
+             <input type="hidden" name="id" value="{{items._id}}">
+             
+            <input type="file" name="profilepic" placeholder="Pick image">
+            <input type="submit" value="Upload">
+            
+            </form>
+
+
+
+
+            {{else}}
+
+            <div class="card">
+                <p class="card_title">
+                    {{items.surname}} {{items.othername}}
+                </p>
+
+                <img style="border-radius:50%;width:100px;height:100px" src="../public/{{image}}" alt="">
+
+                <h5 class="card_text">
+                    {{items.email}}
+                </h5>
+
+                <h5 class="card_text">
+                    {{items.phone}}
+                </h5>
+
+                <h5 class="card_text">
+                    {{items.class}}
+                </h5>
+                <h5 class="card_text">
+                    {{items.address}} , {{items.lga}} , {{items.state}}.
+                </h5>
+
+            </div>
+
+            <form action="/upload/profile" method="POST" enctype="multipart/form-data">
+            
+            
+            <input type="hidden" name="id" value="{{items._id}}">
+            <input type="file" name="profilepic" placeholder="Pick image">
+            <input type="submit" value="Upload">
+            
+            </form>
+            {{/if}}
+        </div>
+
+    </div>
+
+
+    <div class="col-md-8 bg-dark">
+
+
+
+
+    </div>
+
+</div>

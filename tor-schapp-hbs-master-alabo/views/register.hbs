@@ -1,0 +1,57 @@
+
+<div class="studentbody">
+<div class="col-md-4 fbody mt-5">
+{{#if user}}
+        {{!-- <div class="alert alert-danger">Username has taken already try new</div>  --}}
+{{/if}}
+{{#if mail}}
+        <div class="alert alert-danger">Email has taken already try new</div> 
+{{/if}} 
+{{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+      {{/each}}
+{{/if}}
+<!-- Default form register -->
+<form class="text-center border border-light p-5 text-light" method="post" action="/users/register">
+
+    <h2 class="page-header text-center">Register</h2>
+
+    <div class="form-row mb-4">
+        <div class="col">
+            <!-- First name -->
+            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="firstname">
+        </div>
+        <div class="col">
+            <!-- Last name -->
+            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" name="lastname">
+        </div>
+    </div>
+    <input type="text" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="Username" name="username"> 
+    
+
+    <!-- E-mail -->
+    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
+
+    <!-- Password -->
+    <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock"  name="password">
+    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+        At least 8 characters and 1 digit
+    </small>
+    <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Confirm Password" aria-describedby="defaultRegisterFormPasswordHelpBlock"  name="password2">
+    
+
+    
+    <!-- Sign up button -->
+    <button class="btn btn-info my-4 btn-block" type="submit">Submit</button>
+
+    
+
+
+   
+
+</form>
+
+</div>
+</div>
+
