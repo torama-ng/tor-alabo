@@ -75,6 +75,16 @@ hbs.registerHelper('if_eq', function(a, b, opts) {
     }
 });
 
+
+hbs.registerHelper('showfile', function(txt) {
+    // remove .mp4
+    if (txt) {
+        return path.basename(txt.trim(), '.mp4');
+    } else {
+        console.log('Showfile: txt is null')
+    }
+})
+
 hbs.registerHelper('formatImg', function(txt) {
     // remove .mp4
     if (txt) {

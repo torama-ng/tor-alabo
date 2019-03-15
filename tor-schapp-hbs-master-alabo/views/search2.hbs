@@ -1,0 +1,21 @@
+
+<div class="container-fluid mt-5">
+<h4>#{{count}}</h4>
+<h4><span>{{title}}</span>{{title}}</h4>
+
+<ul>
+    {{#each children}}
+
+    <li> <a href="#">{{showfile this}}</a></li>
+    <form action="/courses/play" method="post" >
+                                        <input type="hidden" name="path" value="{{this}}">
+                                        <input type="hidden" name="filename" value="{{showfile this}}">
+                                        <button class="btn btn-primary "> 
+                                            Play Video
+                                        </button>
+                                    </form>
+
+    {{/each}}
+</ul>
+
+</div>

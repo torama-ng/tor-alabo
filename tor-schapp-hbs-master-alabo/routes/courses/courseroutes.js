@@ -38,34 +38,61 @@ router.get('/listree', (req, res, next) => {
             });
         }
     })
-})
+}) 
 
 var msg;
 router.post('/search', (req, res, next) => {
     var videotitle = req.body.text;
     console.log(videotitle);
 
-    subjectsDree.find({
-        'children.children.children.name': { "$regex": videotitle }
-    }, {
-        'children.children.children': 1
-    }).sort({ name: 'asc' }).exec((err, children) => {
-        if (err) {
+    subjectsDree.find({}).sort({ name: 'asc' }).exec((err, data) => {
+        if (err) throw err;
+        let dpath, vt;
 
-            msg = 'No Result found'
-        };
+        if (data) {
 
-        if (children) {
+            console.log(Array.isArray(data) );
+            // console.log(data.slice(0,10))
+            let q = [];
+            
+            function getVal(dat) {
+                // dat is our db object
+                if (dat.type === 'file') {
+                    dpath = dat.path.toLowerCase();
+                    vt = videotitle.toLowerCase();
 
-            console.log('We are in ......', children[0].children);
+                    if ( dpath.includes(vt) ) {
+                        q.push(dat.path);
+                    }
+                    
+                }
+                else if (dat.type === "directory") {
+                    for (var k=0; k<dat.children.length; k++){
+                        getVal(dat.children[k])
+                    }
+                    
+                }
+                return q;
+            }
 
-            res.render('search', {
+            qq =[]
+
+            data.forEach ((item) => {
+                
+                qq.push(...getVal(item))
+
+            })
+
+            console.log('qq count', qq)
+
+            res.render('search2', {
                 title: `Search results for ${videotitle}`,
-                children,
-                count: children.length
+                children: qq,
+                count: qq.length
             });
         } else {
-            console.log('Not Children ...................');
+            console.log(' no data from DB ...................');
+            return res.status('404').send('No data found in search')
         }
     })
 })

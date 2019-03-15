@@ -3,7 +3,6 @@ var router = express.Router();
 const fs = require("fs");
 const path = require("path");
 
-
 const subjectsData = require('../models/subject');
 const User = require('../models/user');
 

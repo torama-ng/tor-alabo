@@ -1,12 +1,13 @@
-<h2 class="page-header text-center mt-5" >Edit User Details for <span class="text-primary"> {{user.firstname}}
+<h2 class="page-header text-center bg-light mt-5" >Edit User Details for <span class="text-primary"> {{user.firstname}}
     {{user.lastname}} </span> </h2>
 
 <div class="studentbody">
 
 
-  <div class="col-md-5   border fbody">
+  <div class="col-md-5   border  fbody ">
     <form method="POST" action="/users/useredit">
-      <div class="form-row mb-4">
+    <h3 class="text head text-center">EDIT RESUME</h3>
+      <div class="form-row mb-4 mt-4">
         <div class="col">
           <!-- First name -->
           <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="firstname"
@@ -20,7 +21,7 @@
       </div>
 
       
-      <div class="form-row mb-4">
+      <div class="form-row mb-4 ">
         <div class="col">
           <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Username" name="username"
             value="{{user.username}}">
@@ -41,6 +42,14 @@
         <input type="text" class="form-control" placeholder="Phone 2" name="phone2" value="{{user.phone2}}">
 
       </div>
+      <div class="form-group">
+        <label class="text-light">Start date</label>
+        <input type="date" class="form-control"  name="start_date" value="{{user.start_date}}">
+        <label class="text-light">End date</label>
+        <input type="date" class="form-control" name="end_date" value="{{user.end_date}}">
+
+      </div>
+
 
 <div class="form-group">
    <label class="text-light">Address</label>

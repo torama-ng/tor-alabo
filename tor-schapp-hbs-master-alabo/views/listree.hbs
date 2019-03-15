@@ -1,6 +1,6 @@
 <style>
   .filediv {
-  background-color: rgba(255, 255, 255, 1) !important;
+  background-color: rgb(12, 11, 11) !important;
   color: white !important; 
   /* color: #ffcc01 !important; */ 
   border-left-color: #d2002e !important;
@@ -9,6 +9,7 @@
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow:ellipsis !important;
+  overflow: visible !important;
   
 }
 .filediv:hover {
@@ -17,7 +18,7 @@
   border-color: #c12e2a !important;
   
   white-space: nowrap !important;
-  overflow: visible !important;
+  
 
   
   
@@ -65,7 +66,7 @@ ul, #myUL {
 
 {{#if user}}
 <div class="container-fluid">
-  <h2 class="page-header">Welcome <span class="text-primary"> {{user.firstname}} {{user.lastname}} </span> </h2>
+  <h2 class="page-header mt-5">Welcome <span class="text-primary"> {{user.firstname}} {{user.lastname}} </span> </h2>
   <div class="row">
     <div class="col-xs-12 rounded w-100 border border-primary p-2">
       <h3 class="text-center">YELA MODERN CURRICULUM ACADEMY</h3>
@@ -106,7 +107,7 @@ ul, #myUL {
 </div>
 
 {{else}}
-<h1 class="pt-6 text-center"> Please Login</h1>
+<h1 class="pt-5 text-center"> Please Login</h1>
 {{/if}}
 
 

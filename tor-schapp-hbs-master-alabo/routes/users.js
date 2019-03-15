@@ -330,7 +330,7 @@ router.post('/register', ensureAuthenticated, function(req, res) {
 });
 
 router.post('/login',
-    passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/users/login', failureFlash: true }),
+    passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/courses/listree', failureFlash: true }),
     function(req, res) {
         res.redirect('/home');
     });
@@ -449,7 +449,7 @@ function ensureAuthenticated(req, res, next) {
         return next();
     } else {
         //req.flash('error_msg','You are not logged in');
-        res.redirect('/users/login');
+        res.redirect('/courses/listree');
     }
 }
 

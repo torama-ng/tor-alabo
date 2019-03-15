@@ -1,47 +1,30 @@
 <div class="container-fluid">
     <div class="col-md-12 pt-5">
-        {{#if user}}
         {{!-- <div class="alert alert-danger">Username has taken already try new</div> --}}
 
-        <h5>#{{count}}</h5>
+        
 
+        <ul>
         {{#each children}}
 
-        <h5>{{this.name}}</h5>
-
-        {{#each children}}
-
-        <h5>{{this.name}}</h5>
-
-        {{#each children}}
-
-        <h5>{{this.name}}</h5>
-
-
-        {{#each children}}
-            {{!-- <video src="{{this.path}}" poster="/images/thumbnail/{{filename2}}-thumbnail-650x350-0001.png"></video> --}}
-        <a style="color:blue">{{this.name}}</a>
+        
+           
+        <li><a href="#">{{showfile this}}</a></li>
         
 
         <form action="/courses/play" method="post">
-            <input type="hidden" name="path" value="{{this.path}}">
-            <input type="hidden" name="filename" value="{{this.name}}">
+            <input type="hidden" name="path" value="{{this}}">
+            <input type="hidden" name="filename" value="{{showfile this}}">
             <button class="btn btn-primary ">
                 Play Video
             </button>
         </form>
+         {{/each}}
+        </ul>
 
-
-        {{/each}}
-
-
-        {{/each}}
-
-        {{/each}}
-
-        {{/each}}
-
-        {{/if}}
+       
+       
 
     </div>
+
 </div>
