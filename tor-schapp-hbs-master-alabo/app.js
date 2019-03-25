@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var expressValidator = require('express-validator');
 
+
+
 var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
@@ -29,6 +31,7 @@ const apiroutes = require('./routes/api/apiroutes');
 const torplay = require('./routes/torplay');
 const routes = require('./routes/index');
 const users = require('./routes/users');
+const upload = require('./routes/upload');
 
 /*
 const nodejs = require('./routes/nodejs');
@@ -93,7 +96,7 @@ hbs.registerHelper('formatImg', function(txt) {
         console.log('formatImg: txt is null')
     }
 
-    // console.log(txt);
+// console.log(txt);
 })
 
 hbs.registerHelper('formatMe', function(txt) {
@@ -190,6 +193,7 @@ app.use('/courses', courses);
 app.use('/data', data);
 app.use('/', routes);
 app.use('/users', users);
+app.use('/pic', upload);
 
 /*
 app.use('/nodejs', nodejs);

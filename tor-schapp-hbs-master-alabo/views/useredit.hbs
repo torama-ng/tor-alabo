@@ -1,12 +1,12 @@
-<h2 class="page-header text-center bg-light mt-5" >Edit User Details for <span class="text-primary"> {{user.firstname}}
-    {{user.lastname}} </span> </h2>
-
 <div class="studentbody">
 
 
   <div class="col-md-5   border  fbody ">
-    <form method="POST" action="/users/useredit">
-    <h3 class="text head text-center">EDIT RESUME</h3>
+    <h4 class="page-header text-center mt-1 ">Edit User Details for <span class="text-primary"> {{user.firstname}}
+        {{user.lastname}} </span> </h4>
+
+    <form method="POST" action="/users/useredit" enctype="multipart/form-data">
+      {{!-- <h3 class="text head text-center">EDIT RESUME</h3> --}}
       <div class="form-row mb-4 mt-4">
         <div class="col">
           <!-- First name -->
@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      
+
       <div class="form-row mb-4 ">
         <div class="col">
           <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Username" name="username"
@@ -31,10 +31,10 @@
             value="{{user.email}}">
         </div>
       </div>
-      <div class="form-group">
+      {{!-- <div class="form-group">
 
         <input type="text" class="form-control" placeholder="Photo URL - /images/users/name.png" name="photourl" value="{{user.photourl}}">
-      </div>
+      </div> --}}
       <div class="form-group">
         <label class="text-light">Phone 1</label>
         <input type="text" class="form-control" placeholder="Phone 1" name="phone1" value="{{user.phone1}}">
@@ -44,33 +44,37 @@
       </div>
       <div class="form-group">
         <label class="text-light">Start date</label>
-        <input type="date" class="form-control"  name="start_date" value="{{user.start_date}}">
+        <input type="date" class="form-control" name="start_date" value="{{user.start_date}}">
         <label class="text-light">End date</label>
         <input type="date" class="form-control" name="end_date" value="{{user.end_date}}">
 
       </div>
 
 
-<div class="form-group">
-   <label class="text-light">Address</label>
-      <div class="form-row mb-4">
-       
-        <div class="col">
-          <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="street" name="street" value="{{user.address.street}}">
-        </div>
-        <div class="col">
-          <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="city" name="city" value="{{user.address.city}}">
-        </div>
-        </div>
-        
-        <div class="form-group">
-        
-        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="state" name="state" value="{{user.address.state}}">
-</div>  
-<div class="form-group">
-        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="zipcode" name="zipcode" value="{{user.address.zipcode}}">
-          
+      <div class="form-group">
+        <label class="text-light">Address</label>
+        <div class="form-row mb-4">
+
+          <div class="col">
+            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="street" name="street"
+              value="{{user.address.street}}">
           </div>
+          <div class="col">
+            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="city" name="city"
+              value="{{user.address.city}}">
+          </div>
+        </div>
+
+        <div class="form-group">
+
+          <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="state" name="state"
+            value="{{user.address.state}}">
+        </div>
+        <div class="form-group">
+          <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="zipcode" name="zipcode"
+            value="{{user.address.zipcode}}">
+
+        </div>
         <div class="form-group">
           <label class="text-light" for="sel1">Select Country:</label>
           <select class="form-control" id="country" name="country">
@@ -86,31 +90,45 @@
           </select>
         </div>
       </div>
-        <div class="form-group">
-          <label class="text-light">Work Experience</label>
-          <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="role" name="role" value="{{user.experience.role}}">
-          </div>
-          <div class="form-group">
-          <textarea  id="defaultRegisterFormLastName" class="form-control" placeholder="Place" name="place" value="{{user.experience.role}}"></textarea>
-          </div>
-          <div class="form-group">
-            
-          <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Start Year" name="start_year" value="{{user.experience.startdate}}">
-          </div>
-          <div class="form-group">
-          <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="End Year"  name="end_year" value="{{user.experience.enddate}}">
-          </div>
+      <div class="form-group">
+        <label class="text-light">Qualification</label>
+        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="School Attende" name="school">
+      </div>
+      <div class="form-group">
+        <textarea id="defaultRegisterFormLastName" class="form-control" placeholder="Course of study" name="subject"></textarea>
+      </div>
+      <div class="form-group">
+
+        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Qualification" name="diploma">
+      </div>
+      <div class="form-group">
+        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="End Year" name="date_obtained">
+      </div>
+      <div class="form-group">
+        <label class="text-light">Work Experience</label>
+        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="role" name="roles">
+      </div>
+      <div class="form-group">
+        <textarea id="defaultRegisterFormLastName" class="form-control" placeholder="Place" name="place"></textarea>
+      </div>
+      <div class="form-group">
+
+        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Start Year" name="start_year">
+      </div>
+      <div class="form-group">
+        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="End Year" name="end_year">
+      </div>
       <div class="form-group">
         <label class="text-light">Reference</label>
         <div class="form-group">
-        <input type="text" class="form-control" placeholder="ref name" name="ref_name" value="{{user.reference.name}}">
+          <input type="text" class="form-control" placeholder="ref name" name="ref_name" value="{{user.reference.name}}">
         </div>
         <div class="form-group">
-        <input type="text" class="form-control" placeholder="ref phone" name="ref_phone" value="{{user.reference.phone}}">
+          <input type="text" class="form-control" placeholder="ref phone" name="ref_phone" value="{{user.reference.phone}}">
         </div>
         <div class="form-group">
-        <input type="text" class="form-control" placeholder="ref email" name="ref_email" value="{{user.reference.email}}">
-      </div>
+          <input type="text" class="form-control" placeholder="ref email" name="ref_email" value="{{user.reference.email}}">
+        </div>
       </div>
 
       <div class="form-group">
@@ -122,11 +140,14 @@
         <input type="password" class="form-control" placeholder="Password2" name="password2">
       </div>
       <div class="form-group">
-        
 
-      <button  type="submit" class="btn btn-primary text-center">Submit</button>
+        <div class="form-group">
+            <label class="text-light">Upload prifile Picture</label>
+            <input type="file" class="form-control" name="photourl">
+        </div>
+        <button type="submit" class="btn btn-primary text-center">Submit</button>
     </form>
-
+     
   </div>
 
 </div>

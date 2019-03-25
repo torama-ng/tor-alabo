@@ -4,7 +4,7 @@
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <span class="d-block d-lg-none">{{user.firstname}} {{user.lastname}}</span>
             <span class="d-none d-lg-block">
-                <img style="width:250px; height:250px; border-radius:50%;" src="/images/users/{{user.firstname}}-{{user.lastname}}.jpg"
+                <img style="width:250px; height:250px; border-radius:50%;" src="{{user.photourl}}"
                     alt="{{user.firstname}} {{user.lastname}}">
             </span>
         </a>
@@ -29,7 +29,7 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#interests">Interests</a>
                 </li>
-            
+
             </ul>
         </div>
     </nav>
@@ -42,17 +42,36 @@
                     <span class="text-primary">{{user.lastname}}</span>
                 </h1>
                 <div class="subheading mb-5">
-                    <p>{{user.address.street}},</p>
-                    <p>State:{{user.address.city}}, {{user.address.state}},</p>
-                   <p>Zipcode: {{user.address.zipcode}}, Nationality:{{user.address.country}}</p>
-                    <a href="mailto:{{user.email}}">{{user.email}}</a>
-
+                    <p>{{user.address.street}}</p>
+                    <P class="mt-n2">Tel: {{user.phone1}}, {{user.phone2}}</P>
+                    <div class="row">
+                        <p>State: </p>
+                        <p class="text-danger"> {{user.address.state}}</p>
+                    </div>
+                    <div class="row">
+                        <p> City: {{user.address.city}}</p>
+                    </div>
+                    <div class="row">
+                        <p>Zipcode: {{user.address.zipcode}}</p>
+                    </div>
+                    <div class="row">
+                        <p>Nationality: {{user.address.country}}</p>
+                    </div>
+                    <div class="row">
+                        <p>Email: <a href="mailto:  {{user.email}}">{{user.email}}</a></p>
+                    </div>
+                    <div class="row">
+                        <p>Start Date: {{user.start_date}}</p>
+                    </div>
+                    <div class="row">
+                        <p>End Date {{user.end_date}}</p>
+                    </div>
                 </div>
 
 
 
 
-               
+
         </section>
 
         <hr class="m-0">
@@ -61,97 +80,99 @@
             <div class="w-100">
                 <h2 class="mb-5">Experience</h2>
 
-                <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class=" resume-item d-flex flex-column flex-md-row mb-5">
                     {{#each user.work_experience}}
-                    <div class="resume-content">
-                        
-                        <h3 class="mb-0" text-success>Role{{this.roles}}</h3>
-                        <div class="subheading mb-3 text-success">{{this.place}}</div>
-                        <p class="lead mb-5 text-success">Start Date: {{this.start_date}}</p>
-                        <p class="lead mb-5 text-success">End Date: {{this.end_date}}</p>
-                        
+                    <div class=" col resume-content">
+
+                        <h3 class="mb-5 mt-3">Role:{{this.roles}}</h3>
+                        <div class="subheading mb-3 text-success">PLACE:  {{this.place}}</div>
+                        <p class="lead mb-5 text-success">Start Date: {{this.start_year}}</p>
+                        <p class="lead mb-5 text-success">End Date: {{this.end_year}}</p>
+
                     </div>
                     {{/each}}
                 </div>
-                    
-                </div>
 
             </div>
-
-        </section>
-
-        <hr class="m-0">
-
-        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
-            <div class="w-100">
-                <h2 class="mb-5">Education</h2>
-
-                <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="resume-content">
-                        <h3 class="mb-0">University of Colorado Boulder</h3>
-                        <div class="subheading mb-3">Bachelor of Science</div>
-                        <div>Computer Science - Web Development Track</div>
-                        <p>GPA: 3.23</p>
-                    </div>
-                    <div class="resume-date text-md-right">
-                        <span class="text-primary">August 2006 - May 2010</span>
-                    </div>
-                </div>
-
-                <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
-                    <div class="resume-content">
-                        <h3 class="mb-0">James Buchanan High School</h3>
-                        <div class="subheading mb-3">Technology Magnet Program</div>
-                        <p>GPA: 3.56</p>
-                    </div>
-                   
-                </div>
-
-            </div>
-        </section>
-
-        <hr class="m-0">
-
-        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
-            <div class="w-100">
-                <h2 class="mb-5">Skills</h2>
-
-                
-
-                <div class="subheading mb-3">Workflow</div>
-                <ul class="fa-ul mb-0">
-                    <li>
-                        <i class="fa-li fa fa-check"></i> Mobile-First, Responsive Design</li>
-                    <li>
-                        <i class="fa-li fa fa-check"></i> Cross Browser Testing &amp; Debugging</li>
-                    <li>
-                        <i class="fa-li fa fa-check"></i> Cross Functional Teams</li>
-                    <li>
-                        <i class="fa-li fa fa-check"></i> Agile Development &amp; Scrum</li>
-                </ul>
-            </div>
-        </section>
-
-        <hr class="m-0">
-
-        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="interests">
-            <div class="w-100">
-                <h2 class="mb-5">Interests</h2>
-                <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an
-                    avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain
-                    biking, free climbing, and kayaking.</p>
-                <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and
-                    television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the
-                    latest technology advancements in the front-end web development
-                    world.</p>
-            </div>
-        </section>
-
-        <hr class="m-0">
-
-        
 
     </div>
+
+    </section>
+
+    <hr class="m-0">
+ 
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
+        <div class="w-100">
+            <h2 class="mb-5">Education</h2>
+            
+
+            <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+                {{#each qualifications}}
+                <div class="resume-content">
+                    <h3 class="mb-0"></h3>
+                    <div class="subheading mb-3">Course of Study:{{this.subject}}</div>
+                    <div>Computer Science - Web Development Track</div>
+                    <p>GPA: 3.23</p>
+                </div>
+                {{/each}}
+                <div class="resume-date text-md-right">
+                    <span class="text-primary">August 2006 - May 2010</span>
+                </div>
+                 
+            </div>
+
+            <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
+                <div class="resume-content">
+                    <h3 class="mb-0">James Buchanan High School</h3>
+                    <div class="subheading mb-3">Technology Magnet Program</div>
+                    <p>GPA: 3.56</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
+        <div class="w-100">
+            <h2 class="mb-5">REFERENCE</h2>
+
+
+
+            <div class="subheading mb-3">Refree Details</div>
+            <ul class=" mb-0">
+                <li>
+                    <i class="fa-li fa fa-check"></i> {{user.reference.name}}</li>
+                <li>
+                    <i class="fa-li fa fa-check"></i> {{user.reference.phone}} </li>
+                <li>
+                    <i class="fa-li fa fa-check"></i> {{user.reference.email}}</li>
+            </ul>
+        </div>
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="interests">
+        <div class="w-100">
+            <h2 class="mb-5">Interests</h2>
+            <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an
+                avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain
+                biking, free climbing, and kayaking.</p>
+            <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and
+                television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the
+                latest technology advancements in the front-end web development
+                world.</p>
+        </div>
+    </section>
+
+    <hr class="m-0">
+
+
+
+</div>
 
 
 </div>

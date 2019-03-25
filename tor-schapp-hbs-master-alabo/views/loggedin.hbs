@@ -1,9 +1,11 @@
 {{!-- <div class="alert alert-danger">Please login</div> --}}
-<div class="container-fluid bg-dark"><h3 class="page-header text-center">Welcome <span class="text-primary"> {{user.firstname}} {{user.lastname}} </span> </h3></div>
-<div class="caption center-block text-center jumbotron bgimage">
-    <h3>Welcome to Yela Modern Curriculum Academy</h3>
-    <p style="color:aliceblue">E-Learning portal</p>
-    <p class="btn btn-outline-light"><a href="/courses/listree">Goto Videos</a></p>
+<div class="container-fluid bg-dark"><h3 class="page-header text-center ">Welcome <span class="text-primary"> {{user.firstname}} {{user.lastname}} </span> </h3></div>
+<div class=" caption center-block  jumbotron bgimage">
+    <div class="col text-center">
+        <h3 class=" align-self-center ">Welcome to Yela Modern Curriculum Academy</h3>
+        <h6 style="color:aliceblue">E-Learning portal</h6>
+        <p class="btn btn-outline-light"><a href="/courses/listree">Goto Videos</a></p>
+    </div>
 </div>
 <div class=" mt-n4">
     <button class="tablink" onclick="openTab('About', this, 'gray')" id="defaultOpen">About</button>

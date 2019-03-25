@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var path = require('path');
+var multer = require('multer');
+
+
 
 
 
@@ -15,22 +18,9 @@ var student = require('../models/students');
 
 
 
-// // Init upload
-// const upload = multer({
-//     storage: storage
-// }).single('profilepic');
-// const mkdirSync = function(dirPath) {
-//     try {
-//         fs.mkdirSync(dirPath)
-//     } catch (err) {
-//         if (err.code !== 'EEXIST') throw err
-//     }
-// }
-
-
 
 // Register
-router.get('/register', ensureAuthenticated, function(req, res) {
+router.get('/register', /*ensureAuthenticated,*/ function(req, res) {
     res.render('register');
 });
 
@@ -85,9 +75,28 @@ router.get('/details', function(req, res) {
 })
 
 
+//file upload
+
+const storage = multer.diskStorage({
+    destination: './public/uploads',
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() +
+            path.extname(file.originalname));
+    }
+});
+
+// Initial the upload variable
+const uplaod = multer({
+    storage: storage
+});
+
+
+
 
 // Update User
-router.post('/useredit', ensureAuthenticated, function(req, res, next) {
+router.post('/useredit', uplaod.single('photourl'), ensureAuthenticated, function(req, res, next) {
+
+
 
     User.findById(req.user._id, function(err, user) {
         if (err) throw err
@@ -96,9 +105,36 @@ router.post('/useredit', ensureAuthenticated, function(req, res, next) {
             req.flash('error', 'No account found');
             return res.redirect('/users/useredit');
         }
-        var street, city, state, zipcode, country, ref_name, ref_email, ref_phone, phone1, phone2, name, username, email;
 
+
+        var street, city, state, zipcode, country, ref_name, ref_email, ref_phone, phone1, phone2, name, username, email, start_date, end_date;
+        var school = req.body.school,
+            subject = req.body.subject,
+            diploma = req.body.diploma,
+            date_obtained = req.body.date_obtained;
+
+        var place = req.body.place,
+            roles = req.body.roles,
+            start_year = req.body.start_year,
+            end_year = req.body.end_year;
+
+
+
+        var qualifications = {
+            school: school,
+            subject: subject,
+            diploma: diploma,
+            date_obtained: date_obtained
+        };
+        var work_experience = {
+            place: place,
+            roles: roles,
+            start_year: start_year,
+            end_year: end_year
+        };
         // good idea to trim 
+        start_date = req.body.start_date;
+        end_date = req.body.end_date;
         var lastname = req.body.lastname.trim();
         if (req.body.email)
             email = req.body.email.trim();
@@ -150,6 +186,8 @@ router.post('/useredit', ensureAuthenticated, function(req, res, next) {
         }
 
 
+
+
         // no need for else since you are returning early ^
         // user.email = email;  // need to verify that no duplicate emails. Handle later
         // user.local.email = email; 
@@ -162,6 +200,38 @@ router.post('/useredit', ensureAuthenticated, function(req, res, next) {
         user.phone2 = phone2;
         user.address = address;
         user.reference = reference;
+        user.start_date = start_date;
+        user.end_date = end_date;
+
+        if (qualifications.school == '' &&
+            qualifications.diploma == '' &&
+            qualifications.subject == '' &&
+            qualifications.date_obtained == '') {
+            console.log('empty qualification fields')
+        } else {
+            user.qualifications.push(qualifications);
+        }
+
+        if (work_experience.place == '' &&
+            work_experience.roles == '' &&
+            work_experience.start_year == '' &&
+            work_experience.end_year == '') {
+            console.log('Work experience is empty')
+        } else {
+            user.work_experience.push(work_experience);
+        }
+
+
+
+        //Check file
+        if (req.file == undefined) {
+            console.log("No File Selected")
+        } else {
+            var photo = "/uploads/" + req.file.filename;
+            user.photourl = photo;
+        }
+
+
 
 
         // don't forget to save!
@@ -267,7 +337,7 @@ passport.deserializeUser(function(id, done) {
 
 
 // Register User
-router.post('/register', ensureAuthenticated, function(req, res) {
+router.post('/register', /*ensureAuthenticated,*/ function(req, res) {
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var email = req.body.email;
@@ -330,7 +400,7 @@ router.post('/register', ensureAuthenticated, function(req, res) {
 });
 
 router.post('/login',
-    passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/courses/listree', failureFlash: true }),
+    passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/users/register', failureFlash: true }),
     function(req, res) {
         res.redirect('/home');
     });

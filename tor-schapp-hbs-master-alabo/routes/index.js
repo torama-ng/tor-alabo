@@ -20,6 +20,12 @@ router.get('/home', ensureAuthenticated, function(req, res) {
 });
 
 
+router.get('/file', ensureAuthenticated, function(req, res) {
+
+    res.render('fileupload');
+});
+
+
 
 
 // stream Video

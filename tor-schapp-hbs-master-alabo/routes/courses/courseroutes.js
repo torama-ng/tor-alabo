@@ -38,7 +38,7 @@ router.get('/listree', (req, res, next) => {
             });
         }
     })
-}) 
+})
 
 var msg;
 router.post('/search', (req, res, next) => {
@@ -51,43 +51,43 @@ router.post('/search', (req, res, next) => {
 
         if (data) {
 
-            console.log(Array.isArray(data) );
+            console.log(Array.isArray(data));
             // console.log(data.slice(0,10))
             let q = [];
-            
+
             function getVal(dat) {
                 // dat is our db object
                 if (dat.type === 'file') {
                     dpath = dat.path.toLowerCase();
                     vt = videotitle.toLowerCase();
 
-                    if ( dpath.includes(vt) ) {
+                    if (dpath.includes(vt)) {
                         q.push(dat.path);
                     }
-                    
-                }
-                else if (dat.type === "directory") {
-                    for (var k=0; k<dat.children.length; k++){
+
+                } else if (dat.type === "directory") {
+                    for (var k = 0; k < dat.children.length; k++) {
                         getVal(dat.children[k])
                     }
-                    
+
                 }
                 return q;
             }
 
-            qq =[]
+            qq = []
 
-            data.forEach ((item) => {
-                
-                qq.push(...getVal(item))
+            data.forEach((doc) => {
+                q = [];
+                qq.push(...getVal(doc))
 
             })
 
             console.log('qq count', qq)
 
             res.render('search2', {
-                title: `Search results for ${videotitle}`,
+                title: `Search results for `,
                 children: qq,
+                text: videotitle,
                 count: qq.length
             });
         } else {

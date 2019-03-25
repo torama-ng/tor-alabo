@@ -1,21 +1,31 @@
-
 <div class="container-fluid mt-5">
-<h4>#{{count}}</h4>
-<h4><span>{{title}}</span>{{title}}</h4>
+    <h4 class="ml-3">#{{count}}</h4>
+    <h4 class="mb-0 ml-3 text-dark">{{title}}<span style="color:red">{{text}}</span></h4>
 
-<ul>
-    {{#each children}}
-
-    <li> <a href="#">{{showfile this}}</a></li>
-    <form action="/courses/play" method="post" >
-                                        <input type="hidden" name="path" value="{{this}}">
-                                        <input type="hidden" name="filename" value="{{showfile this}}">
-                                        <button class="btn btn-primary "> 
-                                            Play Video
-                                        </button>
-                                    </form>
-
-    {{/each}}
-</ul>
+    <ul class="col container-fluid">
+        {{#each children}}
+        <div class="container-fluid">
+            <div class="row flex-wrap">
+                <div class="row">
+                    <form action="/courses/play" method="post">
+                        <input type="hidden" name="path" value="{{this}}">
+                        <input type="hidden" name="filename" value="{{showfile this}}">
+                        <button class="btn  mt-3">
+                            <img class="card-img img-fluid mx-auto" src="/images/thumbnail/{{formatImg this.name}}-thumbnail-650x350-0001.png" alt="Card image">
+                                </div>
+                           {{!-- <img style="width:245px; height:137px;" src="/images/sprinting.jpg" alt=""> --}}
+                        </button>
+                    
+                </div>
+                <button class="btn">
+                <div class="row flex-wrap ml-1 mt-n4">
+                    <h6>{{showfile this}}</h6>
+                </div>
+                </button>
+                </form>
+            </div>
+        </div>
+        {{/each}}
+    </ul>
 
 </div>
