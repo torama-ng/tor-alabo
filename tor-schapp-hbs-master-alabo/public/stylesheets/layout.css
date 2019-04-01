@@ -165,9 +165,16 @@ a.card-link {
 }
 
 
-/* .foo {
-    margin-top: 300px!important;
-} */
+.playbtn{
+    color: rgba(224, 17, 17, 0.5);
+    font-size:35px;
+    transition: all 1s;
+}
+
+.playbtn:hover{
+    
+    transform:scale(2.2);
+}
 
 .logo {
     color: red;
@@ -246,7 +253,7 @@ a.card-link {
     border: 1px solid gray;
     border-radius: 1rem;
     height: 300px;
-    background: linear-gradient(rgba(128, 127, 127, 0.7), rgba(128, 127, 127, 0.7));
+    background: linear-gradient(rgba(128, 127, 127, 0.7), rgba(128, 127, 127, 0.9));
     -webkit-border-radius: 1rem;
     -moz-border-radius: 1rem;
     -ms-border-radius: 1rem;
@@ -259,7 +266,7 @@ a.card-link {
     margin-bottom: 70px;
     border-radius: 1rem;
     border: 1px solid rgb(12, 11, 11);
-    background: linear-gradient(rgba(7, 6, 6, 0.7), rgba(15, 15, 15, 0.7));
+    background: linear-gradient(rgba(224, 224, 224, 0.9), rgba(224, 224, 224, 0.9));
 }
 
 .form-content {
@@ -381,3 +388,90 @@ a.card-link {
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
+
+.box h1{
+    color:white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.box{
+    height: 300px;
+    width: 300px;
+    
+    /* position: absolute;
+    transform:translate(-50%,50%); */
+    background: rgba(131, 131, 133, 0.5);
+    text-align: center;
+    border-radius: 10px;
+}
+.box input[type ="text"],.box input[type = "password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #00A2E7;
+    /* padding: 14px 10px; */
+    width:200px;
+    outline: none;
+    color:white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+.box input[type ="text"]:focus,.box input[type = "password"]:focus{
+width: 250px;
+border-color: rgb(11, 9, 32);
+}
+.box input[type="submit"]{
+    width: 150px;
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #00A2E7;
+    /* padding: 14px 40px; */
+    outline: none;
+    color:white;
+    border-radius: 15px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.box input[type = "submit"]:hover{
+    background:rgb(11, 9, 32);
+    border:solid 2px rgb(201, 54, 54);
+
+}
+.box input[type="text"]:hover, .box input[type="password"]:hover{
+    border:solid 2px rgb(212, 54, 54);
+}
+
+/*Tab form */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }

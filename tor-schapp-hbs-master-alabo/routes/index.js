@@ -12,6 +12,7 @@ const log = (message) => { console.log(message) }
 // Get Homepage
 router.get('/', function(req, res) {
 
+
     res.render('home');
 });
 router.get('/home', ensureAuthenticated, function(req, res) {

@@ -7,9 +7,13 @@
      }
      .lboxsmall {
          left: 10px;
+         
      }
      .rboxsmall{
         left: 10px;
+        display: flex;
+         flex-wrap: wrap;
+         width: 400px;
      }
      
  </style>
@@ -22,24 +26,47 @@
                         </span>
                     {{/equal}}
                     {{#equal this.type 'file'}}
-                    <div class="row ">
+                    <div class="row mt-2">
+                        <div class="col-md-3 bg-light">
 
-                        <div class="col-md-4 bg-warning border rounded  filediv p-1 m-1 " >
+                            <!-- Call route to show all videos in this category-->
+                                    <form action="/courses/play" method="post">
+                                        <input type="hidden" name="path" value="{{this.path}}">
+                                        <input type="hidden" name="filename" value="{{this.name}}">
+                                        <button class="btn"> 
+                                            <i class="fas fa-play playbtn position-absolute p-5 ml-5"></i>
+                                           <img class="card-img img-fluid mx-auto bg-light text-dark" src="/images/thumbnail/{{formatImg this.name}}-thumbnail-650x350-0001.png"  alt="Card image" style="width:245px; height:145px;">
+                                        </button>
+                                    </form>
+                        </div>
+                        <div class="col-5 pl-n3 bg-light">
+                            <form action="/courses/play" method="post">
+                                        <input type="hidden" name="path" value="{{this.path}}">
+                                        <input type="hidden" name="filename" value="{{this.name}}">
+                                        <button class="btn "> 
+                                            <p class="text-left text-dark ml-n2">{{formatMe this.name}}</p>
+                                        </button>
+                                    </form>
+                           
+                        </div>
+                        {{!-- <div class="col-md-4 bg-warning border rounded bg-light filediv p-1 m-1 " >
                             <div class="row">
-                                <div class="col-md-6 p-1 m-1 border rounded lboxsmall">
-                                    <img class="card-img img-fluid mx-auto" src="/images/thumbnail/{{formatImg this.name}}-thumbnail-650x350-0001.png" alt="Card image">
-                                </div>
-                                <div class="col-md-5 m-1 p-1 border rounded rboxsmall">
-                                     <h5 class=" text-left bg-dark text-light position-absolute mt-n3">{{formatMe this.name}}</h5>
-                         
-                                        <!-- Call route to show all videos in this category-->
+                                <div class="col-md-6 p-1 m-1 border  rounded lboxsmall bg-light ">
+                                    <!-- Call route to show all videos in this category-->
                                     <form action="/courses/play" method="post" >
                                         <input type="hidden" name="path" value="{{this.path}}">
                                         <input type="hidden" name="filename" value="{{this.name}}">
-                                        <button class="btn btn-primary "> 
-                                            Play Video
+                                        <button> 
+                                            <i class="fas fa-play playbtn position-absolute p-5 ml-5"></i>
+                                           <img class="card-img img-fluid mx-auto bg-light text-dark" src="/images/thumbnail/{{formatImg this.name}}-thumbnail-650x350-0001.png" alt="Card image">
                                         </button>
                                     </form>
+                                    
+                                </div>
+                                <div class="col-md-8 m-1 p-1 border rounded rboxsmall bg-light">
+                                     <p class=" text-left bg-light text-dark position-absolute mt-n3">{{formatMe this.name}}</p>
+                         
+                                        
                                 </div>
                                 
                                 <div>
@@ -47,9 +74,9 @@
                             </div>
                                
 
-                        </div>
+                        </div>--}}
                         
-                    </div>
+                    </div> 
                     {{/equal}}
                     
                     {{#if this.children}}

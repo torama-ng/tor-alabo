@@ -28,7 +28,8 @@ router.get('/register', /*ensureAuthenticated,*/ function(req, res) {
 router.get('/login', function(req, res) {
     console.log(req.user);
     res.render('login', {
-        userObj: req.user || null
+        userObj: req.user || null,
+
     });
 
 });

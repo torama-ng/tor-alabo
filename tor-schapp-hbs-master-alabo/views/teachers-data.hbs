@@ -4,7 +4,7 @@
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <span class="d-block d-lg-none">{{user.firstname}} {{user.lastname}}</span>
             <span class="d-none d-lg-block">
-                <img style="width:250px; height:250px; border-radius:50%;" src="{{user.photourl}}"
+                <img style="width:250px; height:250px; border-radius:50%; border:2px solid grey" src="{{user.photourl}}"
                     alt="{{user.firstname}} {{user.lastname}}">
             </span>
         </a>
@@ -24,10 +24,10 @@
                     <a class="nav-link js-scroll-trigger" href="#education">Education</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
+                    <a class="nav-link js-scroll-trigger" href="#skills">Interests</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#interests">Interests</a>
+                    <a class="nav-link js-scroll-trigger" href="#interests">reference</a>
                 </li>
 
             </ul>
@@ -36,38 +36,48 @@
 
     <div class="container-fluid p-0">
 
-        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
+        <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="about">
             <div class="w-100">
-                <h1 class="mb-0">{{user.firstname}}
+                <h1 class="mb-0 ml-n3">{{user.firstname}}
                     <span class="text-primary">{{user.lastname}}</span>
                 </h1>
-                <div class="subheading mb-5">
-                    <p>{{user.address.street}}</p>
-                    <P class="mt-n2">Tel: {{user.phone1}}, {{user.phone2}}</P>
+                <div class="row">
+                 <p class="ml-0">Address: {{user.address.street}}</p>
+                </div>
+                    <div class="row">
+                    <p>Tel:</p>
+                    <p class="text-danger">{{user.phone1}}, {{user.phone2}}</P>
+                    </div>
                     <div class="row">
                         <p>State: </p>
                         <p class="text-danger"> {{user.address.state}}</p>
                     </div>
                     <div class="row">
-                        <p> City: {{user.address.city}}</p>
+                        <p> City:</p>
+                        <p class="text-danger">{{user.address.city}}</p>
                     </div>
                     <div class="row">
-                        <p>Zipcode: {{user.address.zipcode}}</p>
+                        <p>Zipcode:</p>
+                        
+                        <p class="text-danger">{{user.address.zipcode}}</p>
                     </div>
                     <div class="row">
-                        <p>Nationality: {{user.address.country}}</p>
+                        <p>Nationality: </p>
+                            <p class="text-danger">{{user.address.country}}</p>
                     </div>
                     <div class="row">
                         <p>Email: <a href="mailto:  {{user.email}}">{{user.email}}</a></p>
                     </div>
                     <div class="row">
-                        <p>Start Date: {{user.start_date}}</p>
+                        <p >Start Date: </p>
+                            <p class="text-danger">    {{user.start_date}}</p>
                     </div>
                     <div class="row">
-                        <p>End Date {{user.end_date}}</p>
+                        <p > End Date:   </p>
+                            <p class="text-danger">   {{user.end_date}}</p>
                     </div>
-                </div>
-
+                
+            </div>
 
 
 
@@ -78,78 +88,89 @@
 
         <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience">
             <div class="w-100">
-                <h2 class="mb-5">Experience</h2>
+                <h2 class="mb-5 ml-n3">Experience</h2>
 
-                <div class=" resume-item d-flex flex-column flex-md-row mb-5">
-                    {{#each user.work_experience}}
-                    <div class=" col resume-content">
-
-                        <h3 class="mb-5 mt-3">Role:{{this.roles}}</h3>
-                        <div class="subheading mb-3 text-success">PLACE:  {{this.place}}</div>
-                        <p class="lead mb-5 text-success">Start Date: {{this.start_year}}</p>
-                        <p class="lead mb-5 text-success">End Date: {{this.end_year}}</p>
-
+                {{#each user.work_experience}}
+                <div class="row">
+                        <p >Role: </p>
+                            <p class="text-danger">     {{this.roles}}</p>
                     </div>
-                    {{/each}}
-                </div>
+                    <div class="row">
+                        <p > Place:   </p>
+                            <p class="text-danger">     {{this.place}}</p>
+                    </div>
+                    <div class="row">
+                        <p >Start Date: </p>
+                            <p class="text-danger">     {{this.start_year}}</p>
+                    </div>
 
+                    <div class="row">
+                        <p>End Date:</p>
+                        <p class="text-danger"> {{this.end_year}}</p>
+                    </div>
+                {{/each}}
             </div>
 
     </div>
 
     </section>
+                    
+
+
 
     <hr class="m-0">
  
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
         <div class="w-100">
-            <h2 class="mb-5">Education</h2>
+            <h2 class="mb-5 ml-n3">Education</h2>
             
 
-            <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-                {{#each qualifications}}
-                <div class="resume-content">
-                    <h3 class="mb-0"></h3>
-                    <div class="subheading mb-3">Course of Study:{{this.subject}}</div>
-                    <div>Computer Science - Web Development Track</div>
-                    <p>GPA: 3.23</p>
-                </div>
-                {{/each}}
-                <div class="resume-date text-md-right">
-                    <span class="text-primary">August 2006 - May 2010</span>
-                </div>
-                 
-            </div>
+            <div class=" resume-item d-flex flex-column flex-md-row mb-5">
+                    {{#each user.qualifications}}
+                    <div class=" col resume-content">
 
-            <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
-                <div class="resume-content">
-                    <h3 class="mb-0">James Buchanan High School</h3>
-                    <div class="subheading mb-3">Technology Magnet Program</div>
-                    <p>GPA: 3.56</p>
+                        
+                        <div class="row">
+                            <p ></p>School Attended:  <p class="text-danger">{{this.school}}</p>
+                            </div>
+                        <div class="row">
+                        <p>Studied: </p>
+                        <p class="text-danger">      {{this.subject}}</p>
+                        </div>
+                        <div class="row">
+                        <p >Qualification: </p>
+                            <p class="text-danger">   {{this.diploma}}</p>
+                        </div>
+                        <div class="row">
+                        <p>Year of Graduation:</p>
+                        <p class="text-danger">     {{this.date_obtained}}</p>
+                        </div>
+                    </div>
+                    {{/each}}
                 </div>
 
-            </div>
-
+            
         </div>
+       
     </section>
 
     <hr class="m-0">
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
         <div class="w-100">
-            <h2 class="mb-5">REFERENCE</h2>
+            <h2 class="mb-5 ml-n3">INTERESTS</h2>
 
 
+        <div class="row">
+           <ul>
+               <li><p>Traveling</p></li>
+               <li><p>Teaching</p></li>
+               <li><p>Studying</p></li>
+               <li><p>Football</p></li>
+               
+           </ul>
+        </div>
 
-            <div class="subheading mb-3">Refree Details</div>
-            <ul class=" mb-0">
-                <li>
-                    <i class="fa-li fa fa-check"></i> {{user.reference.name}}</li>
-                <li>
-                    <i class="fa-li fa fa-check"></i> {{user.reference.phone}} </li>
-                <li>
-                    <i class="fa-li fa fa-check"></i> {{user.reference.email}}</li>
-            </ul>
         </div>
     </section>
 
@@ -157,14 +178,21 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="interests">
         <div class="w-100">
-            <h2 class="mb-5">Interests</h2>
-            <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an
-                avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain
-                biking, free climbing, and kayaking.</p>
-            <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and
-                television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the
-                latest technology advancements in the front-end web development
-                world.</p>
+            <h2 class="mb-5 ml-n3">REFERENCE</h2>
+            <div class="row">
+            <p>Name:</p>
+            <p class="text-danger">    {{user.reference.name}}</p>
+        </div>
+
+        <div class="row">
+            <p>Phone:</p>
+            <p class="text-danger">    {{user.reference.phone}} </p>
+        </div>
+        <div class="row">
+            <p>E-mail:</p>
+            <p class="text-danger">     {{user.reference.email}} </p>
+        </div>
+  
         </div>
     </section>
 

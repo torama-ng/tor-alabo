@@ -1,25 +1,27 @@
 <div class="container-fluid mt-5">
     <h4 class="ml-3">#{{count}}</h4>
-    <h4 class="mb-0 ml-3 text-dark">{{title}}<span style="color:red">{{text}}</span></h4>
+    <h4 class="mb-0 ml-3 text-dark mt-n2 mb-2">{{title}}<span style="color:red">{{text}}</span></h4>
 
+    </div>
     <ul class="col container-fluid">
         {{#each children}}
         <div class="container-fluid">
-            <div class="row flex-wrap">
+            <div class="row flex-wrap mt-n4">
                 <div class="row">
                     <form action="/courses/play" method="post">
                         <input type="hidden" name="path" value="{{this}}">
                         <input type="hidden" name="filename" value="{{showfile this}}">
                         <button class="btn  mt-3">
-                            <img class="card-img img-fluid mx-auto" src="/images/thumbnail/{{formatImg this.name}}-thumbnail-650x350-0001.png" alt="Card image">
-                                </div>
-                           {{!-- <img style="width:245px; height:137px;" src="/images/sprinting.jpg" alt=""> --}}
+                            <i class="fas fa-play playbtn position-absolute p-5 ml-5"></i>
+                            <img style="width:245px; height:130px;" class="card-img img-fluid mx-auto" src="/images/sprinting.jpg" alt="Card image">
+                                
+                        {{!-- <img style="width:245px; height:137px;" src="/images/sprinting.jpg" alt=""> --}}
                         </button>
                     
                 </div>
                 <button class="btn">
                 <div class="row flex-wrap ml-1 mt-n4">
-                    <h6>{{showfile this}}</h6>
+                    <p class="text-dark">{{showfile this}}</p>
                 </div>
                 </button>
                 </form>
