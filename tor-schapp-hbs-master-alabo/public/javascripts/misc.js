@@ -112,7 +112,7 @@ function playMe(mpath)  {
     //   url = url + '#t=0.5';
       // create thumbnail file
       
-      thumbCreate(mp4path);
+      // thumbCreate(mp4path);
 
       // console.log(`url ${url}`)
 

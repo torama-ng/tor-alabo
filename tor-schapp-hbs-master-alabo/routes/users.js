@@ -4,19 +4,11 @@ var passport = require('passport');
 var path = require('path');
 var multer = require('multer');
 
-
-
-
-
-
 var LocalStrategy = require('passport-local').Strategy;
 const { getCode, getData } = require('country-list');
 
 var User = require('../models/user');
 var student = require('../models/students');
-
-
-
 
 
 // Register

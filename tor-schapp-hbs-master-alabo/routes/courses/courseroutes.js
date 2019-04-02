@@ -44,8 +44,9 @@ router.get('/listree', (req, res, next) => {
 })
 
 var msg;
-router.post('/search', (req, res, next) => {
-    var videotitle = req.body.text;
+router.get('/search', (req, res, next) => {
+    var videotitle = req.query.text;
+    if (!videotitle) return res.status(404).send('empty search field')
     console.log(videotitle);
 
     subjectsDree.find({}).sort({ name: 'asc' }).exec((err, data) => {
@@ -77,21 +78,22 @@ router.post('/search', (req, res, next) => {
                 return q;
             }
 
-            qq = []
+            qq = qs= []
 
             data.forEach((doc) => {
                 q = [];
                 qq.push(...getVal(doc))
 
             })
+            qs = qq.slice(0,10);
 
-            console.log('qq count', qq)
+            console.log('qs ', qs)
 
             res.render('search', {
                 title: `Search results for `,
-                children: qq,
+                children: qs,
                 text: videotitle,
-                count: qq.length
+                count: qs.length
             });
         } else {
             console.log(' no data from DB ...................');
@@ -206,7 +208,7 @@ router.get('/videothumb', ensureAuthenticated, (req, res, next) => {
         tmpDir: '/tmp' //only required if you can't write to /tmp/ and you need to generate gifs
     });
 
-    tg.generateOneByPercent(90, { size: '650x350' })
+    tg.generateOneByPercent(02, { size: '615x345' })
         .then((err, result) => {
             if (err) throw err;
             log(result);
