@@ -109,7 +109,7 @@ function playMe(mpath)  {
       let url = mp4path.substring(sublen, mp4len)
       // add thumbnail preview, #t=0.5 to url
       console.log(url)
-      url = url + '#t=0.5';
+    //   url = url + '#t=0.5';
       // create thumbnail file
       
       thumbCreate(mp4path);
@@ -123,7 +123,9 @@ function playMe(mpath)  {
 
       // video.src = encodeURI(url);
       video.src = url;
+      
       video.load();
+      video.focus();
       
       video.play()
       .then( () => {

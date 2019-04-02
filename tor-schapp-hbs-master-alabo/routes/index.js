@@ -85,7 +85,7 @@ router.post('/clicked', ensureAuthenticated, (req, res) => {
         function(err, numberAffected, rawResponse) {
             //handle it
             if (err) throw err;
-            log('result', rawResponse, numberAffected);
+            log('click result:', rawResponse, numberAffected);
         }
     );
 

@@ -195,6 +195,9 @@ router.post('/treeload', (req, res, next) => {
 router.get('/videothumb', ensureAuthenticated, (req, res, next) => {
     // create video thumbnail of given video
     mp4file = req.query.v;
+    if (!fs.existsSync(mp4file)) {
+        res.status(404).send('mp4 file not existing');
+    }
 
     tpath = path.join(__dirname, '../../public/images/thumbnail')
     const tg = new ThumbnailGenerator({
