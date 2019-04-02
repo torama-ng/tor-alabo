@@ -1,5 +1,6 @@
 *.mp4
 videos/
+public/images/thumbnails/
 node_modules/
 *.webm
 *.mp3
