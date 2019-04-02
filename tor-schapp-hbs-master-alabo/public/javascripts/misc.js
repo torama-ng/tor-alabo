@@ -14,7 +14,7 @@ function setDuration(indx) {
 
     //});
 }
-
+/*
 function playVideo(selectid) {
   let video = "";
   
@@ -89,7 +89,7 @@ function playcVideo(selectid) {
   // }
   
 }
-
+*/
 function playMe(mpath)  {
   mp4path = String(mpath);
   
@@ -102,16 +102,19 @@ function playMe(mpath)  {
 
       sublen = cindex + vidlen;
       console.log(`sublen ${sublen}`)
+  
       // extract the mp4 file path from the full path
+      // i.e /home/user1/videos/school/termone/primary/1/math.mp4 becomes
+      // school/termone/primary/1/math.mp4
       let url = mp4path.substring(sublen, mp4len)
       // add thumbnail preview, #t=0.5 to url
-      
+      console.log(url)
       url = url + '#t=0.5';
       // create thumbnail file
       
       thumbCreate(mp4path);
 
-      console.log(`url ${url}`)
+      // console.log(`url ${url}`)
 
       let video = document.getElementById('videoid');  
       let videotext = document.getElementById('videotitle');
@@ -151,6 +154,7 @@ function playMe(mpath)  {
 // substr to decorate string
 
 function thumbCreate(mp4file) {
+
   vpath = '/courses/videothumb?v=' + mp4file;
   console.log (vpath);
   fetch(vpath, {method: 'GET'})
@@ -159,10 +163,10 @@ function thumbCreate(mp4file) {
         console.log('thumpnail was created');
         return;
       }
-      throw new Error('Request failed in /videothumb');
+     
     })
     .catch(function(error) {
-      console.log(error);
+      console.log("Fetch error: ",error);
     });
 
 

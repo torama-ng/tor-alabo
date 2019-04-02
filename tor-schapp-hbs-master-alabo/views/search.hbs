@@ -1,30 +1,58 @@
+<style>
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 6fr; 
+ 
+        grid-column-gap: 1em;;
+        grid-row-gap: 1em;
+    }
+
+    .wrapper > div {
+        background: #fff;
+        padding: 1px;
+    }
+    .wrapper > div:nth-child(odd) {
+        background: #fff;
+        width: "246px";
+        height: "138px"
+
+    }
+
+p#shead {
+    font: 30px;
+    color:tomato;
+    text-transform: uppercase;
+}
+</style>
+
 <div class="container-fluid">
-    <div class="col-md-12 pt-5">
-        {{!-- <div class="alert alert-danger">Username has taken already try new</div> --}}
-
+    <br>
+    <br>
+    <p id="shead"> Search Results for {{text}} ({{count}})<p>
+        <hr>
+    {{#each children}}
+    <div class="wrapper">
+        <div>
+            <!-- <img src="/images/sprinting.jpg" width="200" height="200" alt=""> -->
+            <img class="card-img" 
+                src="/images/thumbnail/{{formatImg this}}-thumbnail-650x350-0001.png" 
+                alt="Video image">
+        </div>
         
-
-        <ul>
-        {{#each children}}
-
-        
-           
-        <li><a href="#">{{showfile this}}</a></li>
-        
-
+        <div>
+        <p> {{showfile this}}</p>
         <form action="/courses/play" method="post">
             <input type="hidden" name="path" value="{{this}}">
             <input type="hidden" name="filename" value="{{showfile this}}">
             <button class="btn btn-primary ">
-                Play Video
-            </button>
-        </form>
-         {{/each}}
-        </ul>
-
+            Play Video
+        </button>
+    </form>
+        </div>
        
-       
-
     </div>
 
+    {{/each}}
+
 </div>
+

@@ -5,6 +5,9 @@ const path = require("path");
 const fetch = require('node-fetch');
 const dree = require('dree')
 const trim = require('deep-trim-node');
+const ThumbnailGenerator = require('video-thumbnail-generator').default;
+
+
 
 const subjectsData = require('../../models/subject');
 const subjectsDree = require('../../models/subjectdree');
@@ -51,7 +54,7 @@ router.post('/search', (req, res, next) => {
 
         if (data) {
 
-            console.log(Array.isArray(data));
+           // console.log(Array.isArray(data));
             // console.log(data.slice(0,10))
             let q = [];
 
@@ -84,7 +87,7 @@ router.post('/search', (req, res, next) => {
 
             console.log('qq count', qq)
 
-            res.render('search2', {
+            res.render('search', {
                 title: `Search results for `,
                 children: qq,
                 text: videotitle,
@@ -108,8 +111,10 @@ router.post('/play', (req, res, next) => {
         categName = vsplit[vsplit.length - 2]; // extract subject name
         filename = vsplit[vsplit.length - 1];
         let basepath = path.dirname(vpath); // we can then dree basepath and return its children into an arrary
+        if (!basepath){ return res.status(404).send(`${basepath} folder not exists`);}
         filename = path.basename(vpath);
         log(`filename is ${filename} basepath is ${basepath}`);
+
         tree = dree.scan(basepath, options)
         tree.children.splice(tree.children.findIndex(v => v.path === vpath), 1); //remove this path from children
     } else return res.status(404).send('vpath not good')
@@ -191,7 +196,6 @@ router.get('/videothumb', ensureAuthenticated, (req, res, next) => {
     // create video thumbnail of given video
     mp4file = req.query.v;
 
-    const ThumbnailGenerator = require('video-thumbnail-generator').default;
     tpath = path.join(__dirname, '../../public/images/thumbnail')
     const tg = new ThumbnailGenerator({
         sourcePath: mp4file,
@@ -199,20 +203,21 @@ router.get('/videothumb', ensureAuthenticated, (req, res, next) => {
         tmpDir: '/tmp' //only required if you can't write to /tmp/ and you need to generate gifs
     });
 
-
     tg.generateOneByPercent(90, { size: '650x350' })
         .then((err, result) => {
             if (err) throw err;
-            console.log(result);
-
+            log(result);
+            return true;
         })
         .catch((err) => {
             console.log(err);
+            throw err;
         })
-
-
-
 })
+
+
+
+
 
 
 // find and display one subject by name - eg
