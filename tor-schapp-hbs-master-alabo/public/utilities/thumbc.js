@@ -20,8 +20,14 @@ const options = {
 };
 
 dirs = fs.readdirSync(videosPath)
+// remode .DS_Store from dirs array
+dirs.splice(dirs.findIndex(v => v.includes('.DS_Store') == true), 1);
+console.log(dirs)
 let  arr = ar = []
+
 dirs.forEach(doc => {
+
+    
     const tree = dree.scan(path.join(videosPath, doc), options)
     // console.log(tree)
     arr = recursedir (tree)
@@ -35,7 +41,7 @@ function recursedir (tree) {
         thumbCreate(tree.path);
         console.log(`processing ${tree.path}`);
     }
-    else if (tree.type=='directory') {
+    else if (tree.type==='directory') {
         if (tree.children && tree.children.length >0)
         tree.children.forEach( (child) => {
             recursedir(child)
