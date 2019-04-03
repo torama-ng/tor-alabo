@@ -94,7 +94,7 @@ function playMe(mpath)  {
   mp4path = String(mpath);
   
   // btnid = mp4path;
-  console.log( 'path '+ mp4path)
+  // console.log( 'path '+ mp4path)
   if ( mp4path.indexOf('.mp4') > 0) {
       let cindex = mp4path.indexOf('videos'); // index of 'videos' in path
       let vidlen = 'videos'.length;

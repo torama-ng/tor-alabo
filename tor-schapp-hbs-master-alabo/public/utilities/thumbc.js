@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const dree = require('dree')
-const trim = require('deep-trim-node');
+
 const ThumbnailGenerator = require('video-thumbnail-generator').default;
 
 const videosPath = "../../videos";
@@ -23,8 +23,9 @@ dirs = fs.readdirSync(videosPath)
 let  arr = ar = []
 dirs.forEach(doc => {
     const tree = dree.scan(path.join(videosPath, doc), options)
+    // console.log(tree)
     arr = recursedir (tree)
-    //  console.log(arr)
+//   console.log(arr)
 
 })
 
@@ -32,6 +33,7 @@ function recursedir (tree) {
     if (tree.type == 'file') {
         ar.push(tree.path)
         thumbCreate(tree.path);
+        console.log(`processing ${tree.path}`);
     }
     else if (tree.type=='directory') {
         if (tree.children && tree.children.length >0)

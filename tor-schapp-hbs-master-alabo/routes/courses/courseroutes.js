@@ -119,6 +119,8 @@ router.post('/play', (req, res, next) => {
 
         tree = dree.scan(basepath, options)
         tree.children.splice(tree.children.findIndex(v => v.path === vpath), 1); //remove this path from children
+       tree.children.splice(tree.children.findIndex(v => v.path.split('.').includes('mp4') == false), 3); //remove path not having mp4 from children
+
     } else return res.status(404).send('vpath not good')
 
 

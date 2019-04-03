@@ -1,7 +1,7 @@
 <style>
     .wrapper {
         display: grid;
-        grid-template-columns: 1fr 6fr; 
+        grid-template-columns: 2fr 6fr; 
  
         grid-column-gap: 1em;;
         grid-row-gap: 1em;
@@ -12,16 +12,59 @@
         padding: 1px;
     }
     .wrapper > div:nth-child(odd) {
-        background: #fff;
+        background:#fff;
+        border: 1px solid blue;
+        /* 
         width: "246px";
         height: "138px"
+         */
+    }
 
+    .wrapper > div:nth-child(even) {
+        background:#fff;
+        border: 1px solid red;
+        /* 
+        width: "246px";
+        height: "138px"
+         */
     }
 
 p#shead {
     font: 30px;
     color:tomato;
     text-transform: uppercase;
+}
+
+@media(max-width:681px){
+    /* good for width less than 681px */
+    .wrapper {
+        display: grid;
+        grid-template-columns: 2fr 3fr; 
+        grid-column-gap: 1em;;
+        grid-row-gap: 2em;
+ 
+    }
+    .card-img {
+        width:185px;
+        height:104px;
+    }
+}
+
+@media(min-width:681px){
+    /* good for width more than 681px */
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 6fr; 
+        grid-column-gap: 1em;;
+        grid-row-gap: 2em;
+        margin-bottom: 20px;
+        
+    }
+     .card-img {
+        width:319px;
+        height:180px;
+    }
+    
 }
 </style>
 
@@ -33,21 +76,21 @@ p#shead {
     {{#each children}}
     <div class="wrapper">
         <div>
-            <!-- <img src="/images/sprinting.jpg" width="200" height="200" alt=""> -->
+           
             <img class="card-img" 
                 src="/images/thumbnail/{{formatImg this}}-thumbnail-615x345-0001.png" 
                 alt="Video image">
         </div>
         
         <div>
-        <p> {{showfile this}}</p>
-        <form action="/courses/play" method="post">
-            <input type="hidden" name="path" value="{{this}}">
-            <input type="hidden" name="filename" value="{{showfile this}}">
-            <button class="btn btn-primary ">
-            Play Video
-        </button>
-    </form>
+            <p> {{showfile this}}</p>
+            <form action="/courses/play" method="post">
+                <input type="hidden" name="path" value="{{this}}">
+                <input type="hidden" name="filename" value="{{showfile this}}">
+                <button class="btn btn-primary ">
+                    Play Video
+                </button>
+            </form>
         </div>
        
     </div>
