@@ -1,4 +1,4 @@
-uname -u will show low user processes allocated by default
+ulimit -a will show low user processes allocated by default
 
 vi /Library/LaunchDaemons/limit.maxproc.plist
 
