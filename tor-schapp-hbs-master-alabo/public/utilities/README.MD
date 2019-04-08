@@ -1,3 +1,7 @@
+Dependencies:
+   npm i fluent-ffmpeg -S
+   
+
 ulimit -a will show low user processes allocated by default
 
 vi /Library/LaunchDaemons/limit.maxproc.plist
