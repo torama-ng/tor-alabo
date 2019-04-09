@@ -8,11 +8,11 @@ var myUtils = new Object();
 myUtils.transformFile = function (mp4file) {
     // returns a file that is good for ffmpeg 
     if (path.extname(mp4file) != '.mp4') {
-            console.log('file ext not mp4');
-            return false;
+          //   console.log('file ext not mp4');
+            return;
     }
     if (!fs.existsSync(mp4file)&& mp4file.split('.').pop()!='mp4') {
-        console.log('mp4 file not existing');
+       //  console.log('mp4 file not existing');
         return;
     }
     var fname1 = path.basename(mp4file,'.mp4')
@@ -37,15 +37,16 @@ myUtils.transformFile = function (mp4file) {
 
 myUtils.toJpg  = function(mp4file,outpath) {
     try {
-        console.log('processing:', mp4file)
+      //  console.log('processing:', mp4file)
         if (path.extname(mp4file) != '.mp4') {
-            console.log('file ext not mp4');
+          //  console.log('file ext not mp4');
             return;
         }
         const filename = "'" + path.basename(mp4file,'.mp4') + '-%s' + "'";
         
         const options = {
-            frame_rate : 1,
+            start_time : 1,
+            frame_rate : 2,
             number : 1,
             size: '300x150',
             file_name : filename
@@ -55,12 +56,14 @@ myUtils.toJpg  = function(mp4file,outpath) {
         var process = new ffmpeg(mp4file);
         process.then(function (video) {
             // Callback mode
+            video.setVideoStartTime(1);
+
             video.fnExtractFrameToJPG(outpath,options,
             function (error, files) {
                 if (error)
                     console.log(error)
                 else 
-                    console.log('Frames: ' );
+                   console.log('Frames: ' );
             });
             
         }, function (err) {
@@ -74,6 +77,9 @@ myUtils.toJpg  = function(mp4file,outpath) {
     }
 }
 
+myUtils.toPng = function(mp4file,outpath) {
+
+}
 myUtils.removeFromArray =  function (array,el) {
     var index = array.indexOf(el);
     if (index > -1) {
