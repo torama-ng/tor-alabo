@@ -1,3 +1,5 @@
+// A stab at OOP
+
 const ffmpeg = require('ffmpeg');
 const path = require('path');
 const fs = require('fs-extra');

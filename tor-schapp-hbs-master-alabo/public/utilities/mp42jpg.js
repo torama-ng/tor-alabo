@@ -1,5 +1,6 @@
 /* 
 This version uses OS command form of ffmpeg, not nodejs-wrapped
+We add this to utilities to a branch
 */
 const cmd = require('node-cmd')
 
