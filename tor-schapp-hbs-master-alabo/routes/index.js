@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const fs = require("fs");
 const path = require("path");
-const resize = require('../public/utilities/resizeimage');
+// const resize = require('../public/utilities/resizeimage');
 
 const subjectsData = require('../models/subject');
 const User = require('../models/user');
@@ -31,7 +31,7 @@ router.get('/file', ensureAuthenticated, function(req, res) {
 
 
 // stream Video
-router.get('/video', ensureAuthenticated,function(req, res) {
+router.get('/video', ensureAuthenticated, function(req, res) {
     // this creates a stream that can then be added to html video tag as src.
     // eg. <video id="videoPlayer" controls>
     // <source src="http://localhost:3000/video" type="video/mp4"></video>
@@ -93,9 +93,9 @@ router.post('/clicked', ensureAuthenticated, (req, res) => {
 });
 
 router.get('/resizeimage', ensureAuthenticated, (req, res, next) => {
-   
 
-    
+
+
 })
 
 

@@ -1,0 +1,22 @@
+body{
+padding:0;
+margin:0;
+}
+
+h1{
+	color: aqua;
+	background: grey;
+	
+}
+
+p {
+	color:red;
+	
+	
+}
+
+/* p:hover{
+	transition: all 3s ease-in ease-out;
+	font-size: 36px;
+	color: aqua;
+} */
