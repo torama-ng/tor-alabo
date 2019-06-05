@@ -1,5 +1,6 @@
 const hbs = require('handlebars');
 hbs.registerHelper("equal", require("handlebars-helper-equal"))
+hbs.registerHelper('paginate', require('handlebars-paginate'));
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -31,6 +32,7 @@ const apiroutes = require('./routes/api/apiroutes');
 const torplay = require('./routes/torplay');
 const routes = require('./routes/index');
 const users = require('./routes/users');
+const students = require('./routes/students');
 const upload = require('./routes/upload');
 
 /*
@@ -54,21 +56,46 @@ var app = express();
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('hbs', exphbs({
+// app.engine('hbs', exphbs({
+//     extname: 'hbs',
+//     layoutsDir: __dirname + '/views/layouts/',
+//     partialsDir: __dirname + '/views/partials/',
+//     defaultLayout: 'layout',
+
+// }));
+
+app.set('view engine', 'hbs');
+
+
+
+
+const hb = exphbs.create({
     extname: 'hbs',
     layoutsDir: __dirname + '/views/layouts/',
     partialsDir: __dirname + '/views/partials/',
     defaultLayout: 'layout',
+    helpers: {
+        test: function(tv) {
+            return tv * 5;
+        },
+        // list: function(value, options) {
+        //     return "<h1>" + options.fn({ new: value }) + "</h1>"
 
-}));
+        // },
 
-app.set('view engine', 'hbs');
 
+
+    }
+
+});
+
+app.engine('hbs', hb.engine);
 
 //Handlebars Partial
 
 // Handlebars helpers
 hbs.registerHelper("equal", require("handlebars-helper-equal"))
+hbs.registerHelper("paginate", require("handlebars-paginate"))
 
 hbs.registerHelper('if_eq', function(a, b, opts) {
     if (a === b) {
@@ -77,6 +104,7 @@ hbs.registerHelper('if_eq', function(a, b, opts) {
         return opts.inverse(this);
     }
 });
+
 
 
 hbs.registerHelper('showfile', function(txt) {
@@ -89,15 +117,20 @@ hbs.registerHelper('showfile', function(txt) {
 })
 
 hbs.registerHelper('formatImg', function(txt) {
-    // remove .mp4
-    if (txt) {
-        return path.basename(txt.trim(), '.mp4');
-    } else {
-        console.log('formatImg: txt is null')
-    }
+        // remove .mp4
+        if (txt) {
+            return path.basename(txt.trim(), '.mp4');
+        } else {
+            console.log('formatImg: txt is null')
+        }
 
-// console.log(txt);
-})
+        // console.log(txt);
+    })
+    // hbs.registerHelper('list', function(value, options) {
+
+//     return options.fn({ new: 'GATATTA', mg: value });
+// });
+
 
 hbs.registerHelper('formatMe', function(txt) {
     if (txt) {
@@ -193,6 +226,7 @@ app.use('/courses', courses);
 app.use('/data', data);
 app.use('/', routes);
 app.use('/users', users);
+app.use('/students', students);
 app.use('/pic', upload);
 
 /*

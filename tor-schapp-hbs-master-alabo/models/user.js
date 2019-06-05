@@ -46,13 +46,13 @@ var UserSchema = mongoose.Schema({
         school: String,
         diploma: String,
         subject: String,
-        date_obtained: Date
+        date_obtained: String
     }],
     work_experience: [{
         place: String,
         roles: String,
-        start_year: Date,
-        end_year: Date
+        start_year: String,
+        end_year: String
 
     }]
 

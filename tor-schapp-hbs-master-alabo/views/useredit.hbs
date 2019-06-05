@@ -1,14 +1,238 @@
 
-<div class="studentbody">
+  <script src="/javascripts/jquery-ease_1.3.js" type="text/javascript"></script>
+  <script src="/javascripts/jquery-2.1.3.min.js" type="text/javascript"></script>
+  
+  
+ 
+  {{!-- <link rel="stylesheet" href="style.css"> --}}
+<style>
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.con {
+   
+    height: 100%;
+    background: rgb(0, 162, 232); /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, rgb(0, 162, 232), #00A2E8); /* Chrome 10-25, Safari 5.1-6 */
+}
+
+.con1{
+   margin-top: 50px;
+    font-family: montserrat, arial, verdana;
+    background: transparent;
+     height: 80%;
+     width: 100%;
+}
+
+/*form styles*/
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+   
+}
+
+#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/*inputs*/
+#msform input, #msform textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+}
+
+#msform input:focus, #msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #ee0979;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+}
+
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: #ee0979;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #C5C5F1;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+}
+
+/*headings*/
+.fs-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 25%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+     /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #ee0979;
+    color: white;
+}
 
 
-  <div class="col-md-5   border  fbody ">
-    <h4 class="page-header text-center mt-1 ">Edit User Details for <span class="text-primary"> {{user.firstname}}
-        {{user.lastname}} </span> </h4>
+/* Not relevant to this form */
+.dme_link {
+    margin-top: 30px;
+    text-align: center;
+}
+.dme_link a {
+    background: #FFF;
+    font-weight: bold;
+    color: #ee0979;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 5px 25px;
+    font-size: 12px;
+}
 
-    <form method="POST" action="/users/useredit" enctype="multipart/form-data">
-      {{!-- <h3 class="text head text-center">EDIT RESUME</h3> --}}
-      <div class="form-row mb-4 mt-4">
+.dme_link a:hover, .dme_link a:focus {
+    background: #C5C5F1;
+    text-decoration: none;
+}
+</style>
+
+
+
+<!-- // HTML File -->
+<!-- MultiStep Form -->
+
+
+<div class=" container-fluid d-flex con1 justify-content-center align-items-center" style="background:#00a2e8;">
+    <div class="col-md-8">
+        <form id="msform" method="POST" action="/users/useredit" enctype="multipart/form-data">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Personal Details</li>
+                <li>Qualification</li>
+                <li>Work Experience </li>
+                <li>Reference</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset class="mb-5">
+                <h2 class="fs-title">Personal Details</h2>
+                <h3 class="fs-subtitle">Tell us something more about you</h3>
+        <div class="form-row ">
         <div class="col">
           <!-- First name -->
           <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="firstname"
@@ -20,9 +244,8 @@
             value="{{user.lastname}}">
         </div>
       </div>
-
-
-      <div class="form-row mb-4 ">
+      <div class="form-group">
+      <div class="form-row">
         <div class="col">
           <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Username" name="username"
             value="{{user.username}}">
@@ -32,28 +255,23 @@
             value="{{user.email}}">
         </div>
       </div>
-      {{!-- <div class="form-group">
-
-        <input type="text" class="form-control" placeholder="Photo URL - /images/users/name.png" name="photourl" value="{{user.photourl}}">
-      </div> --}}
-      <div class="form-group">
-        <label class="text-light">Phone 1</label>
-        <input type="text" class="form-control" placeholder="Phone 1" name="phone1" value="{{user.phone1}}">
-        <label class="text-light">Phone 2</label>
-        <input type="text" class="form-control" placeholder="Phone 2" name="phone2" value="{{user.phone2}}">
-
       </div>
       <div class="form-group">
-        <label class="text-light">Start date</label>
+        {{!-- <label class="text-light">Phone 1</label> --}}
+        <input type="text" class="form-control" placeholder="Phone 1" name="phone1" value="{{user.phone1}}">
+        {{!-- <label class="text-light">Phone 2</label> --}}
+        <input type="text" class="form-control" placeholder="Phone 2" name="phone2" value="{{user.phone2}}">
+      </div>
+
+      <div class="form-group">
+        <label class="text-dark">Start date</label>
         <input type="date" class="form-control" name="start_date" value="{{user.start_date}}">
-        <label class="text-light">End date</label>
+        <label class="text-dark">End date</label>
         <input type="date" class="form-control" name="end_date" value="{{user.end_date}}">
 
       </div>
-
-
       <div class="form-group">
-        <label class="text-light">Address</label>
+        <label class="text-dark">Address</label>
         <div class="form-row mb-4">
 
           <div class="col">
@@ -77,7 +295,7 @@
 
         </div>
         <div class="form-group">
-          <label class="text-light" for="sel1">Select Country:</label>
+          <label class="text-dark" for="sel1">Select Country:</label>
           <select class="form-control" id="country" name="country">
             {{#each countries}}
             {{#if_eq this.code "NG"}}
@@ -91,9 +309,16 @@
           </select>
         </div>
       </div>
-      <div class="form-group">
-        <label class="text-light">Qualification</label>
-        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="School Attende" name="school">
+         
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset class="mb-5">
+                <h2 class="fs-title">Qualification</h2>
+                <h3 class="fs-subtitle">Update your Qualification</h3>
+
+ <div class="form-group">
+        
+        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="School Attended" name="school">
       </div>
       <div class="form-group">
         <textarea id="defaultRegisterFormLastName" class="form-control" placeholder="Course of study" name="subject"></textarea>
@@ -103,57 +328,153 @@
         <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Qualification" name="diploma">
       </div>
       <div class="form-group">
-        <label class="text-light">Year Obtained</label>
+        <label class="text-dark">Year Obtained</label>
         <input type="date" id="defaultRegisterFormLastName" class="form-control" placeholder="End Year" name="date_obtained">
       </div>
-      <div class="form-group">
-        <label class="text-light">Work Experience</label>
-        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="role" name="roles">
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+
+              <fieldset class="mb-5">
+                <h2 class="fs-title">Work Experience</h2>
+                <h3 class="fs-subtitle">Update your work Experience</h3>
+                 <div class="form-group">
+        
+        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Role" name="roles">
       </div>
       <div class="form-group">
-        <textarea id="defaultRegisterFormLastName" class="form-control" placeholder="Place" name="place"></textarea>
+        <input id="defaultRegisterFormLastName" class="form-control" placeholder="Place" name="place">
       </div>
       <div class="form-group">
-        <label class="text-light">Start year</label>
+        <label class="text-dark">Start year</label>
         <input type="date" id="defaultRegisterFormLastName" class="form-control" placeholder="Start Year" name="start_year">
       </div>
       <div class="form-group">
-        <label class="text-light">End Year</label>
+        <label class="text-dark">End Year</label>
         <input type="date" id="defaultRegisterFormLastName" class="form-control" placeholder="End Year" name="end_year">
       </div>
-      <div class="form-group">
-        <label class="text-light">Reference</label>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+
+            <fieldset class="mb-5">
+                <h2 class="fs-title">Reference and display picture</h2>
+                <h3 class="fs-subtitle">Fill in your reference</h3>
+        
         <div class="form-group">
           <input type="text" class="form-control" placeholder="ref name" name="ref_name" value="{{user.reference.name}}">
-        </div>
-        <div class="form-group">
+        
+      
           <input type="text" class="form-control" placeholder="ref phone" name="ref_phone" value="{{user.reference.phone}}">
-        </div>
-        <div class="form-group">
+       
+        
           <input type="text" class="form-control" placeholder="ref email" name="ref_email" value="{{user.reference.email}}">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="text-light">Password</label>
+        <label class="text-dark">Password</label>
         <input type="password" class="form-control" placeholder="Password" name="password">
-      </div>
-      <div class="form-group">
-        <label class="text-light">Confirm Password</label>
+        <label class="text-dark">Confirm Password</label>
         <input type="password" class="form-control" placeholder="Password2" name="password2">
       </div>
-      <div class="form-group">
+     
+            <label class="text-dark">Upload Display Picture</label>
+            <input type="file"  name="photourl">
+        
+            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+            <button type="submit"  class="btn action-button">Submit</button>
+            </fieldset>
+        
+        </form>
+        <!-- link to designify.me code snippets -->
+       
+    </div>
+</div>
 
-       <div class="form-group">
-            <label class="text-light">Upload prifile Picture</label>
-            <input type="file" class="form-control" name="photourl">
-        </div>
-        <button type="submit" class="btn btn-primary text-center">Submit</button>
-    </form>
+<!-- /.MultiStep Form -->
 
-  </div>
 
-</div> 
+<!-- // JavaScriptb file  -->
+<script>
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+
+$(".next").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
+	
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	
+	//show the next fieldset
+	next_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 50)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({
+        'transform': 'scale('+scale+')',
+       'position': 'relative'
+      });
+			next_fs.css({'left': left, 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".previous").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	previous_fs = $(this).parent().prev();
+	
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+	
+	//show the previous fieldset
+	previous_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale previous_fs from 80% to 100%
+			scale = 0.8 + (1 - now) * 0.2;
+			//2. take current_fs to the right(50%) - from 0%
+			left = ((1-now) * 50)+"%";
+			//3. increase opacity of previous_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".submit").click(function(){
+	return false;
+})
+</script>
 
 
 

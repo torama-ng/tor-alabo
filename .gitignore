@@ -1,9 +1,0 @@
-*.mp4
-videos/
-public/images/thumbnails/
-public/images/thumbnail/
-node_modules/
-*.webm
-*.mp3
-*.old
-*Shortcut.lnk

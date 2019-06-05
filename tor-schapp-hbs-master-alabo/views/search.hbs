@@ -71,6 +71,7 @@ p#shead {
 <div class="container-fluid">
     <br>
     <br>
+    <br>
     <p id="shead"> Search Results for {{text}} ({{count}})<p>
         <hr>
     {{#each children}}
@@ -78,12 +79,13 @@ p#shead {
         <div>
            
             <img class="card-img" 
-                src="/images/thumbnail/{{formatImg this}}-thumbnail-615x345-0001.png" 
+                src="/images/thumbnail/{{formatImg this}}_tn.jpg" 
                 alt="Video image">
         </div>
         
-        <div>
+        <div class="d-flex flex-column flex-wrap">
             <p> {{showfile this}}</p>
+            
             <form action="/courses/play" method="post">
                 <input type="hidden" name="path" value="{{this}}">
                 <input type="hidden" name="filename" value="{{showfile this}}">
@@ -97,5 +99,26 @@ p#shead {
 
     {{/each}}
 
+{{!-- <div class="pagination justify-content-center">
+  <ul class="pagination justify-content-center">
+    {{#paginate pagination type="first"}}
+      <li class="page-item"  {{#if disabled}}class="disabled"{{/if}}><a  class="page-link" href="?p={{n}}">First</a></li class="page-item">
+    {{/paginate}}
+    {{#paginate pagination type="previous"}}
+      <li class="page-item" {{#if disabled}}class="disabled"{{/if}}><a class="page-link" href="?p={{n}}">Prev</a></li class="page-item">
+    {{/paginate}}
+    {{#paginate pagination type="middle" limit="10"}}
+      <li class="page-item" {{#if active}}class="active"{{/if}}><a class="page-link" href="?p={{nt}}">{{n}}</a></li class="page-item">
+    {{/paginate}}
+    {{#paginate pagination type="next"}}
+      <li class="page-item" {{#if disabled}}class="disabled"{{/if}}><a class="page-link" href="?p={{n}}">Next</a></li class="page-item">
+    {{/paginate}}
+    {{#paginate pagination type="last"}}
+      <li class="page-item" {{#if disabled}}class="disabled"{{/if}}><a class="page-link" href="?p={{n}}">Last</a></li class="page-item">
+    {{/paginate}}
+  </ul>
+</div> --}}
 </div>
+
+
 

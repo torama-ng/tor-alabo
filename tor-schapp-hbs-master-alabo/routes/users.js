@@ -8,11 +8,11 @@ var LocalStrategy = require('passport-local').Strategy;
 const { getCode, getData } = require('country-list');
 
 var User = require('../models/user');
-var student = require('../models/students');
+
 
 
 // Register
-router.get('/register', /*ensureAuthenticated,*/ function(req, res) {
+router.get('/register', ensureAuthenticated, function(req, res) {
     res.render('register');
 });
 
@@ -39,7 +39,7 @@ router.get('/listusers', ensureAuthenticated, function(req, res) {
 });
 
 // user edit form
-router.get('/userform', function(req, res) {
+router.get('/userform', ensureAuthenticated, function(req, res) {
     id = req.user._id
     countries = getData();
     console.log(countries)
@@ -55,7 +55,7 @@ router.get('/userform', function(req, res) {
 
 });
 
-router.get('/details', function(req, res) {
+router.get('/details', ensureAuthenticated, function(req, res) {
     id = req.user._id;
     User.findById(id, function(err, user) {
         if (err) throw err
@@ -66,6 +66,7 @@ router.get('/details', function(req, res) {
     })
 
 })
+
 
 
 //file upload
@@ -236,9 +237,9 @@ router.post('/useredit', uplaod.single('photourl'), ensureAuthenticated, functio
         });
     });
 });
-router.get('/students', ensureAuthenticated, function(req, res) {
-    res.render('reg-student');
-});
+
+
+
 // Register User
 router.post('/student', ensureAuthenticated, function(req, res) {
     var name = req.body.name;
@@ -330,7 +331,7 @@ passport.deserializeUser(function(id, done) {
 
 
 // Register User
-router.post('/register', /*ensureAuthenticated,*/ function(req, res) {
+router.post('/register', ensureAuthenticated, function(req, res) {
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var email = req.body.email;
@@ -405,107 +406,6 @@ router.get('/logout', function(req, res) {
 
     res.redirect('/users/login');
 });
-
-//Student Reg
-router.post('/students', ensureAuthenticated, function(req, res) {
-    var body = req.body;
-
-    var items = {
-        surname: body.surname,
-        othername: body.othername,
-        email: body.email,
-        phone: body.phone,
-        class: body.class,
-        state: body.state,
-        lga: body.lga,
-        address: body.address
-
-    }
-
-    if (body.surname) {
-        var doc = new student(items);
-        doc.save();
-
-        res.render('student_profile', {
-            items
-        });
-
-    } else {
-        res.status(200).send("fill names");
-    }
-
-});
-
-
-// userData.find({ email: req.body.email }, (err, doc) => {
-//     if (err) throw err;
-//     if (doc) {
-//         res.render("forgot_password", {
-//             userData: items,
-//             error: "User with this email already exists"
-//         });
-//     } else {
-//         var data = new userData(items);
-//         data.save();
-
-//         res.render('signedup_view', {
-//             username: data.name,
-//             password: password,
-//         })
-//     }
-// });            user: ""
-
-// mkdirSync("../public/upload/");
-// img upload
-// router.post('/student_img', (req, res, next) => {
-
-//     if (req.files) {
-
-//         var file = req.files.image;
-//         var name = file.name;
-//         id = req.body.id;
-
-//         var filePt = path.join(`../public/upload/${name}`);
-//         file.mv(filePt, (err) => {
-//             if (err) throw err;
-//             console.log('File moved');
-
-//             student.findOneAndUpdate({ _id: id }, ({
-//                     $push: { 'profilepic': filePt }
-//                 }),
-//                 ({ new: false }),
-//                 (err, data) => {
-//                     if (err) throw err;
-//                     res.json(data);
-
-
-//                 })
-
-//         })
-
-//         console.log(file);
-//     } else {
-//         res.send('Errorrrrr');
-//     }
-// });
-
-
-
-
-router.get('/student_profile', ensureAuthenticated, (req, res, next) => {
-
-    student.find({ surname: "Ala" }).limit(0).exec(function(err, data) {
-        if (err) throw err;
-
-        console.log(data);
-
-        res.render('student_profile', {
-            items: data[0]
-        });
-
-    });
-
-})
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {

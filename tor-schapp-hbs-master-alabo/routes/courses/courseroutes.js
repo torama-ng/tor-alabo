@@ -43,8 +43,9 @@ router.get('/listree', (req, res, next) => {
     })
 })
 
-var msg;
+
 router.get('/search', (req, res, next) => {
+
     var videotitle = req.query.text;
     if (!videotitle) return res.status(404).send('empty search field')
     console.log(videotitle);
@@ -55,7 +56,7 @@ router.get('/search', (req, res, next) => {
 
         if (data) {
 
-           // console.log(Array.isArray(data));
+            // console.log(Array.isArray(data));
             // console.log(data.slice(0,10))
             let q = [];
 
@@ -78,22 +79,29 @@ router.get('/search', (req, res, next) => {
                 return q;
             }
 
-            qq = qs= []
+            qq = qs = []
 
             data.forEach((doc) => {
                 q = [];
                 qq.push(...getVal(doc))
 
             })
-            qs = qq.slice(0,10);
+            qs = qq.slice(0, 10);
 
             console.log('qs ', qs)
+
+
+
 
             res.render('search', {
                 title: `Search results for `,
                 children: qs,
                 text: videotitle,
-                count: qs.length
+                count: qs.length,
+                pagination: {
+                    page: 4,
+                    pageCount: qs.length
+                }
             });
         } else {
             console.log(' no data from DB ...................');
@@ -113,13 +121,13 @@ router.post('/play', (req, res, next) => {
         categName = vsplit[vsplit.length - 2]; // extract subject name
         filename = vsplit[vsplit.length - 1];
         let basepath = path.dirname(vpath); // we can then dree basepath and return its children into an arrary
-        if (!basepath){ return res.status(404).send(`${basepath} folder not exists`);}
+        if (!basepath) { return res.status(404).send(`${basepath} folder not exists`); }
         filename = path.basename(vpath);
         log(`filename is ${filename} basepath is ${basepath}`);
 
         tree = dree.scan(basepath, options)
         tree.children.splice(tree.children.findIndex(v => v.path === vpath), 1); //remove this path from children
-       tree.children.splice(tree.children.findIndex(v => v.path.split('.').includes('mp4') == false), 3); //remove path not having mp4 from children
+        tree.children.splice(tree.children.findIndex(v => v.path.split('.').includes('mp4') == false), 3); //remove path not having mp4 from children
 
     } else return res.status(404).send('vpath not good')
 

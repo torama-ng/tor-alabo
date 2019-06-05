@@ -1,8 +1,12 @@
-
+<br>
+<div class="container-fluid mt-n1" style="background:#00a2e8; height:100%">
+<div class="mt-5">
+     
 {{#if user}}
-    <div class="container">
-        <table class="table table-striped table-primary mt-5">
-            <thead>
+    <div class="container mt-5">
+        
+        <table class="table table-striped table-light mt-5">
+            <thead >
                 <tr>
                 <th scope="col">#</th>
                  <th>Profile picture</th>
@@ -20,7 +24,11 @@
                 {{#each users}}
                 <tr>
                 <th scope="row">{{@index}}</th>
-                <th><img class="tea" src="{{photourl}}"></th>
+                {{#if photourl}}
+                <th><img src="{{photourl}}" alt="photo" class="tea"></th>
+                {{else}}
+                <th><img src="/images/Avatar-dp.jpg" alt="photo" class="tea"></th>
+                {{/if}}
                 <td>{{firstname}}</td>
                 <td>{{lastname}}</td>
                 <td>{{username}}</td>
@@ -35,9 +43,9 @@
             
        
     </div>
+       </div> 
         
-        
-        
+    </div> 
 {{else}}
      <div class="alert alert-danger">Please login</div>
 {{/if}}

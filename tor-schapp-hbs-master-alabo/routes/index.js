@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const fs = require("fs");
 const path = require("path");
-// const resize = require('../public/utilities/resizeimage');
+const resize = require('../public/utilities/resizeimage');
 
 const subjectsData = require('../models/subject');
 const User = require('../models/user');

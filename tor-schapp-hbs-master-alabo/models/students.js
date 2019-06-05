@@ -3,17 +3,95 @@ const Schema = mongoose.Schema;
 
 //Defining a data representation
 var studData = new Schema({
-    surname: { type: String, required: true },
-    othername: { type: String, required: true },
+    firstname: {
+        type: String,
+
+        trim: true
+    },
+    lastname: {
+        type: String,
+        trim: true
+    },
+    middlename: {
+        type: String,
+
+        trim: true
+    },
     studentid: { type: mongoose.Schema.Types.ObjectId },
-    email: { type: String, required: true },
-    phone: { type: String, required: true },
-    class: { type: String, required: true },
-    state: { type: String, required: true },
-    lga: { type: String, required: true },
-    address: { type: String, required: true },
-    profilepic: { type: String, required: false },
-    regdate: { type: Date, default: Date.now }
+    dob: {
+        type: String
+
+    },
+    gender: {
+        type: String
+
+    },
+    student_class: {
+        type: String,
+        trim: true
+    },
+    state: {
+        type: String,
+        trim: true
+    },
+    lga: {
+        type: String,
+
+        trim: true
+    },
+    street: {
+        type: String,
+
+    },
+    city: {
+        type: String,
+
+    },
+    regdate: {
+        type: Date,
+        default: Date.now
+    },
+    title: {
+        type: String,
+
+    },
+    surname: {
+        type: String,
+        trim: true
+    },
+    othername: {
+        type: String,
+        reqiured: true,
+        trim: true
+    },
+    phone1: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    phone2: {
+        type: String,
+        trim: true
+    },
+    email: {
+        type: String,
+        trim: true
+    },
+
+    student_interests: {
+        int1: String,
+        int2: String,
+        int3: String,
+        int4: String,
+
+
+
+    },
+    student_dp: {
+        type: String,
+        trim: true,
+        default: ''
+    },
 
 
 });

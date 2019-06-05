@@ -1,5 +1,6 @@
 {{!-- <div class="alert alert-danger">Please login</div> --}}
-<div class="container-fluid bg-dark"><h3 class="page-header text-center ">Welcome <span class="text-primary"> {{user.firstname}} {{user.lastname}} </span> </h3></div>
+{{!-- <div class="container-fluid bg-dark"><h3 class="page-header text-center ">Welcome <span class="text-primary"> {{user.firstname}} {{user.lastname}} </span> </h3></div> --}}
+
 <div class=" caption center-block  jumbotron bgimage">
     <div class="col text-center">
         <h3 class=" align-self-center ">Welcome to Yela Modern Curriculum Academy</h3>
@@ -8,10 +9,10 @@
     </div>
 </div>
 <div class=" mt-n4">
-    <button class="tablink" onclick="openTab('About', this, 'gray')" id="defaultOpen">About</button>
+    <button class="tablink" onclick="openTab('About', this, 'gray')" >About</button>
     <button class="tablink" onclick="openTab('Admission', this, 'gray')">Admission</button>
     <button class="tablink" onclick="openTab('Academics', this, 'gray')">Academics</button>
-    <button class="tablink" onclick="openTab('Athletics', this, 'gray')">Athletics</button>
+    <button class="tablink" onclick="openTab('Athletics', this, 'gray')" id="defaultOpen">Athletics</button>
 </div>
     <!-- About Section -->
     <div id="About" class="tabcontent">
@@ -81,7 +82,7 @@ Welcome, once again to our site as we hope you will join us in this most importa
     </div>
 </div>
 <!-- Academics section -->
-<div id="Academics" class="tabcontent">
+<div id="Academics" class="tabcontent ta">
     <!-- <div id="Academics"> -->
     <h3 class="text-center">Academics</h3>
     <div class="container-fluid colo">

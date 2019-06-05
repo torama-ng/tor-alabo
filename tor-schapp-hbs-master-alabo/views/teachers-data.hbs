@@ -4,7 +4,7 @@
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <span class="d-block d-lg-none">{{user.firstname}} {{user.lastname}}</span>
             <span class="d-none d-lg-block">
-                <img style="width:250px; height:250px; border-radius:50%; border:2px solid grey" src="{{user.photourl}}"
+                <img style="width:230px; height:230px; border-radius:30%; border-top:5px solid #00a2e8; border-bottom:5px solid #00a2e8;" src="{{user.photourl}}"
                     alt="{{user.firstname}} {{user.lastname}}">
             </span>
         </a>
@@ -38,7 +38,7 @@
 
         <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="about">
             <div class="w-100">
-                <h1 class="mb-0 ml-n3">{{user.firstname}}
+                <h1 class="mb-0 ml-n3 mt-3">{{user.firstname}}
                     <span class="text-primary">{{user.lastname}}</span>
                 </h1>
                 <div class="row">
@@ -91,6 +91,7 @@
                 <h2 class="mb-5 ml-n3">Experience</h2>
 
                 {{#each user.work_experience}}
+                {{!-- <a class="text-danger align-middle" href="/users/detail/work?={{this.place}}">Delete</a> --}}
                 <div class="row">
                         <p >Role: </p>
                             <p class="text-danger">     {{this.roles}}</p>
@@ -126,6 +127,7 @@
             
 
             <div class=" resume-item d-flex flex-column flex-md-row mb-5">
+                
                     {{#each user.qualifications}}
                     <div class=" col resume-content">
 
