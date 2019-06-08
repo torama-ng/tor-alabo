@@ -115,10 +115,25 @@ function playMe(mpath) {
 
         let video = document.getElementById('videoid');
         let videotext = document.getElementById('videotitle');
+        let newvideotext = document.getElementById('v');
 
         videotext.innerText = url.substring(0, url.lastIndexOf('.'));
+        let ar = url.split('/');
+        let ner = ar[4];
+        let net = ner.replace(/.mp4/g, "")
+        let vidTexy = net.replace(/_/g, " ");
 
+        // console.log('VALUE OF AR:', ar)
+        // console.log('VALUE OF AR:', ner)
+        // console.log('VALUE OF Net:', net)
+        // console.log('VALUE OF VIDTEXy:', vidTexy)
 
+        if (url.lastIndexOf('.')) {
+            videotext.style.display = "none";
+            newvideotext.innerHTML = vidTexy;
+        } else {
+            console.log("No video url found")
+        }
         // video.src = encodeURI(url);
         video.src = url;
 
