@@ -84,7 +84,7 @@ p#shead {
         </div>
         
         <div class="d-flex flex-column flex-wrap">
-            <p> {{showfile this}}</p>
+            <p> {{removeUnderscore this}}</p>
             
             <form action="/courses/play" method="post">
                 <input type="hidden" name="path" value="{{this}}">

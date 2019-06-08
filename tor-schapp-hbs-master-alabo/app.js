@@ -117,19 +117,23 @@ hbs.registerHelper('showfile', function(txt) {
 })
 
 hbs.registerHelper('formatImg', function(txt) {
-        // remove .mp4
-        if (txt) {
-            return path.basename(txt.trim(), '.mp4');
-        } else {
-            console.log('formatImg: txt is null')
-        }
+    // remove .mp4
+    if (txt) {
+        return path.basename(txt.trim(), '.mp4');
+    } else {
+        console.log('formatImg: txt is null')
+    }
 
-        // console.log(txt);
-    })
-    // hbs.registerHelper('list', function(value, options) {
+    // console.log(txt);
+})
+hbs.registerHelper('removeUnderscore', function(txt) {
+    if (txt) {
+        var vidName = path.basename(txt.trim(), '.mp4');
+        var vidTitle = vidName.replace(/_/g, " ");
+        return vidTitle;
+    }
 
-//     return options.fn({ new: 'GATATTA', mg: value });
-// });
+});
 
 
 hbs.registerHelper('formatMe', function(txt) {

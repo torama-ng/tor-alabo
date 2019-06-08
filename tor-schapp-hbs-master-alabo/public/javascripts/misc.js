@@ -1,16 +1,13 @@
-
-
-
 // Set Video Duration in proper place
 
-function setDuration(indx) {  
- // var vidTag = document.querySelectorAll('video');
-  // vidTag.forEach((val,index) => {
-      
-  var dur = document.getElementById('video-'+ indx).duration;
-  duration = (dur/60).toFixed(2);
-  
-  document.getElementById('vid-'+ indx).textContent = duration + " mins";
+function setDuration(indx) {
+    // var vidTag = document.querySelectorAll('video');
+    // vidTag.forEach((val,index) => {
+
+    var dur = document.getElementById('video-' + indx).duration;
+    duration = (dur / 60).toFixed(2);
+
+    document.getElementById('vid-' + indx).textContent = duration + " mins";
 
     //});
 }
@@ -90,86 +87,87 @@ function playcVideo(selectid) {
   
 }
 */
-function playMe(mpath)  {
-  mp4path = String(mpath);
-  
-  // btnid = mp4path;
-  // console.log( 'path '+ mp4path)
-  if ( mp4path.indexOf('.mp4') > 0) {
-      let cindex = mp4path.indexOf('videos'); // index of 'videos' in path
-      let vidlen = 'videos'.length;
-      let mp4len = mp4path.length;
+function playMe(mpath) {
+    mp4path = String(mpath);
 
-      sublen = cindex + vidlen;
-      console.log(`sublen ${sublen}`)
-  
-      // extract the mp4 file path from the full path
-      // i.e /home/user1/videos/school/termone/primary/1/math.mp4 becomes
-      // school/termone/primary/1/math.mp4
-      let url = mp4path.substring(sublen, mp4len)
-      // add thumbnail preview, #t=0.5 to url
-      console.log(url)
-    //   url = url + '#t=0.5';
-      // create thumbnail file
-      
-      // thumbCreate(mp4path);
+    // btnid = mp4path;
+    // console.log( 'path '+ mp4path)
+    if (mp4path.indexOf('.mp4') > 0) {
+        let cindex = mp4path.indexOf('videos'); // index of 'videos' in path
+        let vidlen = 'videos'.length;
+        let mp4len = mp4path.length;
 
-      // console.log(`url ${url}`)
+        sublen = cindex + vidlen;
+        console.log(`sublen ${sublen}`)
 
-      let video = document.getElementById('videoid');  
-      let videotext = document.getElementById('videotitle');
-      
-      videotext.innerText = url.substring(0, url.lastIndexOf('.'));
+        // extract the mp4 file path from the full path
+        // i.e /home/user1/videos/school/termone/primary/1/math.mp4 becomes
+        // school/termone/primary/1/math.mp4
+        let url = mp4path.substring(sublen, mp4len)
+            // add thumbnail preview, #t=0.5 to url
+        console.log(url)
+            //   url = url + '#t=0.5';
+            // create thumbnail file
 
-      // video.src = encodeURI(url);
-      video.src = url;
-      
-      video.load();
-      video.focus();
-      
-      video.play()
-      .then( () => {
-        console.log('playing')
-        // save play incident touser record
+        // thumbCreate(mp4path);
 
-        fpath = '/clicked?cpath='+ mp4path
+        // console.log(`url ${url}`)
 
-        fetch(fpath, {method: 'POST'})
-          .then(function(response) {
-            if(response.ok) {
-              console.log('Click was recorded');
-              return;
-            }
-            throw new Error('Request failed in /clicked');
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
+        let video = document.getElementById('videoid');
+        let videotext = document.getElementById('videotitle');
 
-        })
-      .catch( ( err ) => {
-          console.log('play failed '+ err)
-      })
-  }    
+        videotext.innerText = url.substring(0, url.lastIndexOf('.'));
+
+
+        // video.src = encodeURI(url);
+        video.src = url;
+
+        video.load();
+        video.focus();
+
+        video.play()
+            .then(() => {
+                console.log('playing')
+                    // save play incident touser record
+
+                fpath = '/clicked?cpath=' + mp4path
+
+                fetch(fpath, { method: 'POST' })
+                    .then(function(response) {
+                        if (response.ok) {
+                            console.log('Click was recorded');
+                            return;
+                        }
+                        throw new Error('Request failed in /clicked');
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    });
+
+            })
+            .catch((err) => {
+                console.log('play failed ' + err)
+            })
+    }
 }
 // Handlebars helperS
 // substr to decorate string
 
 function thumbCreate(mp4file) {
 
-  vpath = '/courses/videothumb?v=' + mp4file;
-  console.log (vpath);
-  fetch(vpath, {method: 'GET'})
-    .then(function(response) {
-      if(response.ok) {
-        console.log('thumpnail was created');
-        return;
-      }
-     
-    })
-    .catch(function(error) {
-      console.log("Fetch error: ",error);
-    });
+    vpath = '/courses/videothumb?v=' + mp4file;
+    console.log(vpath);
+    fetch(vpath, { method: 'GET' })
+        .then(function(response) {
+            if (response.ok) {
+                console.log('thumpnail was created');
+                return;
+            }
+
+        })
+        .catch(function(error) {
+            console.log("Fetch error: ", error);
+        });
 
 
 }
