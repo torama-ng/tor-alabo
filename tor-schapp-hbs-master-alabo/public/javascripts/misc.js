@@ -119,14 +119,15 @@ function playMe(mpath) {
 
         videotext.innerText = url.substring(0, url.lastIndexOf('.'));
         let ar = url.split('/');
-        let ner = ar[4];
+
+        let last = function last(array, n) {
+            if (array == null) return void 0;
+            if (n == null) return array[array.length - 1]
+            return array.slice(Math.max(array.length - n, 0));
+        }
+        let ner = last(ar);
         let net = ner.replace(/.mp4/g, "")
         let vidTexy = net.replace(/_/g, " ");
-
-        // console.log('VALUE OF AR:', ar)
-        // console.log('VALUE OF AR:', ner)
-        // console.log('VALUE OF Net:', net)
-        // console.log('VALUE OF VIDTEXy:', vidTexy)
 
         if (url.lastIndexOf('.')) {
             videotext.style.display = "none";

@@ -29,7 +29,7 @@ const options = {
     extensions: ['mp4']
 };
 
-router.get('/listree', (req, res, next) => {
+router.get('/listree', ensureAuthenticated, (req, res, next) => {
     subjectsDree.find({}).sort({ name: 'asc' }).exec((err, children) => {
         if (err) return res.status(404).send('Error Encountered');
         if (children) {
@@ -44,7 +44,7 @@ router.get('/listree', (req, res, next) => {
 })
 
 
-router.get('/search', (req, res, next) => {
+router.get('/search', ensureAuthenticated, (req, res, next) => {
 
     var videotitle = req.query.text;
     if (!videotitle) return res.status(404).send('empty search field')
@@ -110,7 +110,7 @@ router.get('/search', (req, res, next) => {
     })
 })
 
-router.post('/play', (req, res, next) => {
+router.post('/play', ensureAuthenticated, (req, res, next) => {
     let categName;
     let vsplit = [];
     let vpath = req.body.path;
@@ -147,7 +147,7 @@ router.post('/play', (req, res, next) => {
 })
 
 
-router.post('/walkdel', (req, res, next) => {
+router.post('/walkdel', ensureAuthenticated, (req, res, next) => {
 
     // if (process.env.PLATFORM != "PROD"){
     //     return res.send('This is not PROD environment. Data is not deleted');
@@ -166,7 +166,7 @@ router.post('/walkdel', (req, res, next) => {
 
 
 // recursive walk down videospath and load
-router.post('/treeload', (req, res, next) => {
+router.post('/treeload', ensureAuthenticated, (req, res, next) => {
 
 
     dirs = fs.readdirSync(videosPath)
