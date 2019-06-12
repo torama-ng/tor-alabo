@@ -98,10 +98,10 @@ router.get('/search', ensureAuthenticated, (req, res, next) => {
                 children: qs,
                 text: videotitle,
                 count: qs.length,
-                pagination: {
-                    page: 4,
-                    pageCount: qs.length
-                }
+                // pagination: {
+                //     page: 4,
+                //     pageCount: qs.length
+                // }
             });
         } else {
             console.log(' no data from DB ...................');
